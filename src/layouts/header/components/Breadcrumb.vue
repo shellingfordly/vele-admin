@@ -16,7 +16,6 @@ export default defineComponent({
     );
 
     function changCollapse() {
-      console.log(isCollapse);
       appStore.setIsCollapse(!isCollapse.value);
     }
 

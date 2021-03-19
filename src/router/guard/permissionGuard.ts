@@ -9,7 +9,7 @@ configure({ showSpinner: false })
 const whitePathList: PageEnum[] = [LOGIN_PATH];
 
 export function createPermissionGuard(router: Router) {
-  router.beforeEach((to, from, next) => {
+  router.beforeEach((to, _, next) => {
     start()
 
     if (whitePathList.includes(to.path as PageEnum)) {
@@ -20,20 +20,14 @@ export function createPermissionGuard(router: Router) {
 
     const token = userStore.getTokenState;
 
-    // 检查token
     if (!token) {
-
       const redirectData = {
         path: LOGIN_PATH,
         replace: true,
       };
-
-      console.log(to, from);
-
       next(redirectData);
       return
     }
-
 
     next()
   });

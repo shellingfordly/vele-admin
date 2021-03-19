@@ -21,7 +21,7 @@ import { defineComponent, onMounted } from "vue";
 import LayoutContent from "./content/Content.vue";
 import LayoutFooter from "./footer/Footer.vue";
 import LayoutHeader from "./header/Header.vue";
-import LayoutMenu from "./menu/index.vue";
+import LayoutMenu from "./menu/Menu.vue";
 import AppModule from "../store/modules/app";
 
 export default defineComponent({

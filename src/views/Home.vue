@@ -14,7 +14,7 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     function onClick() {
-      router.push("/aaaa");
+      router.push("/about");
     }
 
     return { onClick };

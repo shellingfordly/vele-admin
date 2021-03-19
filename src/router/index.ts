@@ -1,6 +1,7 @@
 import type { App } from 'vue';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import type { AppRouteRecordRaw } from '/@/router/types/types';
+import parseMenu from './menu'
 import createGuard from './guard/index'
 import baseRoutes from './baseRoute'
 
@@ -10,6 +11,10 @@ const routeModules: AppRouteRecordRaw[] = Object
   .reduce<any[]>((pre, k) => [...pre, ...modules[k].default], []);
 
 const allRoutes = [...routeModules, ...baseRoutes]
+
+parseMenu(routeModules)
+
+
 
 const router = createRouter({
   // 指定路由的模式,此处使用的是hash模式
