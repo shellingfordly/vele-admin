@@ -22,3 +22,5 @@ export function setRouter(app: App<Element>) {
   app.use(router)
   createGuard(router)
 }
+
+export default router
