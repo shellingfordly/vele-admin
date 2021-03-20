@@ -14,8 +14,6 @@ const allRoutes = [...routeModules, ...baseRoutes]
 
 parseMenu(routeModules)
 
-
-
 const router = createRouter({
   // 指定路由的模式,此处使用的是hash模式
   history: createWebHistory(),

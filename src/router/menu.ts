@@ -5,11 +5,17 @@ import { menuStore } from '../store/modules/menu'
 
 export default function parseMenu(routes: AppRouteRecordRaw[]) {
   const menus = traverse(routes)
+  console.log(menus);
+  
   menuStore.setMenusAction(menus)
 }
 
 function traverse(routes: AppRouteRecordRaw[], path = '') {
   const menus: MenuModel[] = []
+  routes.sort((a, b) => {
+    if (a.meta.menuNum && b.meta.menuNum) return a.meta.menuNum - b.meta.menuNum
+    return 1
+  })
 
   routes.forEach(route => {
 

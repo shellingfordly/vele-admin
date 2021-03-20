@@ -8,15 +8,17 @@ const homeRoutes: AppRouteRecordRaw[] = [
     component: LAYOUT,
     redirect: '/home/desc',
     meta: {
-      title: '首页'
+      title: '首页',
+      icon: 'el-icon-menu',
+      menuNum: 10,
     },
     children: [
       {
         path: 'desc',
         name: 'Desc',
-        component: () => import('/@/views/Home.vue'),
+        component: () => import('/@/views/home/Home.vue'),
         meta: {
-          title: '首页'
+          title: '首页',
         },
       },
     ]

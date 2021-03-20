@@ -1,8 +1,6 @@
 <template>
   <div>
     Home
-    <el-button type="primary" @click="onClick">主要按钮</el-button>
-    <router-link to="/about">about</router-link>
   </div>
 </template>
 <script lang="ts">

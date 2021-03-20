@@ -18,19 +18,14 @@
 import { computed, ComputedRef, defineComponent } from "vue";
 import appStore from "/@/store/modules/app";
 import { menuStore } from "../../../store/modules/menu";
-import { MenuBarModel } from "/@/types/router/menu";
+import { MenuModel } from "/@/types/router/menu";
 import MenuItem from "./MenuItem.vue";
 
 export default defineComponent({
   components: { MenuItem },
   setup() {
     const isCollapse = computed(() => appStore.getIsCollapse);
-    const menus: ComputedRef<MenuBarModel[]> = computed(() =>
-      menuStore.getMenus.map((menu) => ({
-        ...menu,
-        isSubmenu: !!menu.children.length,
-      }))
-    );
+    const menus: ComputedRef<MenuModel[]> = computed(() => menuStore.getMenus);
 
     function handleOpen(key: any, keyPath: any) {
       console.log(key, keyPath);

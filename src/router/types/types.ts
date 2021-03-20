@@ -44,7 +44,7 @@ export interface RouteMeta {
   // Never show in menu
   hideMenu?: boolean;
 
-  menuOrderNo?: number;
+  menuNum?: number;
 }
 
 // @ts-ignore

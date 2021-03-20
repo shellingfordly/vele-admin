@@ -4,8 +4,3 @@ export interface MenuModel {
   icon: string
   children: MenuModel[] | []
 }
-
-
-export interface MenuBarModel extends MenuModel {
-  isSubmenu: boolean
-}
