@@ -8,9 +8,9 @@
       :collapse="isCollapse"
       background-color="#d3dce6"
       text-color="#444"
-      active-text-color="#000"
+      active-text-color="red"
     >
-      <MenuItem :menus="menus" />
+      <MenuItem :menu="menu" v-for="(menu, i) in menus" :key="menu.path" />
     </el-menu>
   </el-scrollbar>
 </template>

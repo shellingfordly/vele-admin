@@ -1,24 +1,25 @@
 import type { AppRouteRecordRaw } from '/@/router/types/types';
 import { PageEnum } from '/@/enums/pageEnum';
 
+export const REDIRECT_NAME = 'Redirect';
 
 export const LAYOUT = () => import('/@/layouts/index.vue');
 
 export const RedirectRoute: AppRouteRecordRaw = {
   path: '/redirect',
-  name: 'redirect',
+  name: REDIRECT_NAME,
   component: LAYOUT,
   meta: {
-    title: 'redirect',
+    title: REDIRECT_NAME,
     hideBreadcrumb: true,
   },
   children: [
     {
       path: '/redirect/:path(.*)',
-      name: 'redirect',
+      name: REDIRECT_NAME,
       component: () => import('/@/views/sys/Redirect.vue'),
       meta: {
-        title: 'redirect',
+        title: REDIRECT_NAME,
         hideBreadcrumb: true,
       },
     },
@@ -58,7 +59,7 @@ export const RootRoute: AppRouteRecordRaw = {
 export const LoginRoute: AppRouteRecordRaw = {
   path: '/login',
   name: 'Login',
-  component: () => import('/@/views/sys/login/Login.vue'),
+  component: () => import('/@/views/sys/login/Login1.vue'),
   meta: {
     title: '登录',
   },

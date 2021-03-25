@@ -1,4 +1,7 @@
 export interface UserInfoModel {
-  username: string
-  password: string
+  type: string;
+  account: string;
+  password: string;
+  captcha_id: string;
+  captcha_value: string;
 }

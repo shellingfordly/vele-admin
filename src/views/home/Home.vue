@@ -1,18 +1,19 @@
 <template>
   <div>
     Home
+    <el-button @click="onClick">click</el-button>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useRouter } from "vue-router";
+import { userStore } from "/@/store/modules/user";
 
 export default defineComponent({
   name: "",
   setup() {
-    const router = useRouter();
-    function onClick() {
-      router.push("/about");
+    async function onClick() {
+      const userInfo = await userStore.getUserInfoAction();
+      console.log(userInfo);
     }
 
     return { onClick };

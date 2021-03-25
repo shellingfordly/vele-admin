@@ -6,7 +6,7 @@ import { PageEnum } from '/@/enums/pageEnum';
 import { TOKEN_KEY, USER_INFO_KEY } from '/@/enums/cacheEnum'
 import store from '/@/store';
 import router from '/@/router';
-import API from '/@/api'
+import { loginApi, getUserInfo } from '/@/api'
 
 const NAME = 'user';
 
@@ -47,7 +47,7 @@ export default class User extends VuexModule {
   @Action
   async loginAction(params: UserInfoModel) {
     try {
-      const token = await API.login(params)
+      const token = await loginApi(params)
       this.commitToken(token)
 
       const userInfo = await this.getUserInfoAction();
@@ -59,15 +59,18 @@ export default class User extends VuexModule {
     }
   }
 
-
   @Action
-  async getUserInfoAction() {
-    const userInfo = await API.getUserInfo()
-    this.commitUserInfo(userInfo)
-    return userInfo
+  logout(goLogin = false) {
+    goLogin && router.push(PageEnum.BASE_LOGIN);
   }
 
 
+  @Action
+  async getUserInfoAction() {
+    const userInfo: any = await getUserInfo()
+    this.commitUserInfo(userInfo)
+    return userInfo
+  }
 }
 
 export const userStore = getModule<User>(User);
