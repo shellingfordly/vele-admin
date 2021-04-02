@@ -1,4 +1,3 @@
-import { LoginParams, GetUserInfoByUserIdModel, GetImageCodeResultModel } from './model';
 import http from '../utils/http';
 import { RrrorMessageEnum } from '/@/enums/httpEnum';
 
@@ -12,7 +11,7 @@ enum Api {
 /**
  * @description: user login api
  */
-export function loginApi(params: LoginParams, mode = RrrorMessageEnum.MODEL) {
+export function loginApi(params: any, mode = RrrorMessageEnum.MODEL) {
   // 返回token
   return http.request<string>(
     {
@@ -41,7 +40,7 @@ export function logoutApi(params: {} = {}) {
  * @description: getImageCode
  */
 export function getImageCode(params = {}) {
-  return http.request<GetImageCodeResultModel>({
+  return http.request<any>({
     url: Api.ImageCode,
     method: 'GET',
     params,
@@ -52,7 +51,7 @@ export function getImageCode(params = {}) {
  * @description: getUserInfo
  */
 export function getUserInfo() {
-  return http.request<GetUserInfoByUserIdModel>({
+  return http.request<any>({
     url: Api.GetUserInfo,
     method: 'GET',
   });
