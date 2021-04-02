@@ -1,21 +1,24 @@
 /**
  * @description: Request result set
  */
-export enum ResultEnum {
-  // SUCCESS = 0,
-  // ERROR = 1,
-  // TIMEOUT = 401,
-  // TYPE = 'success',
+ export enum ResultEnum {
   SUCCESS = 10000,
   ERROR = 10001,
   TIMEOUT = 401,
   TYPE = 'success',
 }
 
+export enum CodeStyleEnum {
+  UNDERLINE = 'underline',
+  CAMEL = 'camel',
+  MIX = 'mix',
+}
+
+
 /**
  * @description: 错误消息提示
  */
- export enum RrrorMessageEnum {
+export enum RrrorMessageEnum {
   MESSAGE = 'message',
   MODEL = 'model',
 }
