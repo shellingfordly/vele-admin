@@ -8,10 +8,13 @@ import './style/index.less'
 
 const app = createApp(App)
 
+app.config.globalProperties.foo = 'bar'
+
 setRouter(app)
 setupStore(app)
 
 // all
 setup(app)
+
 
 app.mount('#app')

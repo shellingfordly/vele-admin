@@ -25,23 +25,23 @@ export function createPermissionGuard(router: Router) {
       return
     }
 
-    const token = userStore.getTokenState;
+    // const token = userStore.getTokenState;
 
-    if (!token) {
-      const redirectData: { path: string; replace: boolean; query?: Indexable<string> } = {
-        path: LOGIN_PATH,
-        replace: true,
-      };
+    // if (!token) {
+    //   const redirectData: { path: string; replace: boolean; query?: Indexable<string> } = {
+    //     path: LOGIN_PATH,
+    //     replace: true,
+    //   };
 
-      if (to.path) {
-        redirectData.query = {
-          ...redirectData.query,
-          redirect: encodeURIComponent(to.fullPath),
-        };
-      }
-      next(redirectData);
-      return
-    }
+    //   if (to.path) {
+    //     redirectData.query = {
+    //       ...redirectData.query,
+    //       redirect: encodeURIComponent(to.fullPath),
+    //     };
+    //   }
+    //   next(redirectData);
+    //   return
+    // }
 
     if (permissionStore.getIsDynamicAddedRouteState) {
       next();
