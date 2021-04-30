@@ -19,6 +19,7 @@ const homeRoutes: AppRouteRecordRaw[] = [
         component: () => import('/@/views/home/Home.vue'),
         meta: {
           title: '首页',
+          hideMenu: true
         },
       },
     ]

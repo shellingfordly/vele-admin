@@ -16,17 +16,18 @@ function traverse(routes: AppRouteRecordRaw[], path = '') {
   })
 
   routes.forEach(route => {
-
-    const menu: MenuModel = {
-      path: path ? parsePath([path, route.path]) : route.path,
-      name: route.meta.title,
-      icon: route.meta.icon || '',
-      children: []
+    if(!route.meta.hideMenu) {
+      const menu: MenuModel = {
+        path: path ? parsePath([path, route.path]) : route.path,
+        name: route.meta.title,
+        icon: route.meta.icon || '',
+        children: []
+      }
+      if (route.children && route.children.length !== 0) {
+        menu.children = traverse(route.children, menu.path)
+      }
+      menus.push(menu)
     }
-    if (route.children && route.children.length !== 0) {
-      menu.children = traverse(route.children, menu.path)
-    }
-    menus.push(menu)
   })
 
   return menus

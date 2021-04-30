@@ -4,20 +4,20 @@
       <layout-menu />
     </el-aside>
     <el-container>
-      <el-header>
+      <el-header v-if="isShow.header">
         <layout-header />
       </el-header>
       <el-main>
         <layout-content />
       </el-main>
-      <el-footer>
+      <el-footer v-if="isShow.footer">
         <layout-footer />
       </el-footer>
     </el-container>
   </el-container>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, reactive } from "vue";
 import LayoutContent from "./content/Content.vue";
 import LayoutFooter from "./footer/Footer.vue";
 import LayoutHeader from "./header/Header.vue";
@@ -33,6 +33,11 @@ export default defineComponent({
     LayoutMenu,
   },
   setup() {
+    const isShow = reactive({
+      header: true,
+      footer: false
+    })
+
     onMounted(() => {
       const saveWindowSize = () => {
         const height =
@@ -45,7 +50,7 @@ export default defineComponent({
       window.addEventListener("resize", saveWindowSize);
     });
 
-    return {};
+    return {isShow};
   },
 });
 </script>
@@ -59,14 +64,6 @@ export default defineComponent({
     line-height: 48px;
     border-bottom: 1px solid #eee;
   }
-}
-
-.el-footer {
-  background-color: #b3c0d1;
-}
-
-.el-aside {
-  background-color: #d3dce6;
 }
 
 .el-container:nth-child(5) .el-aside,

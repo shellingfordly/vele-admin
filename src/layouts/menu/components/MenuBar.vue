@@ -6,9 +6,7 @@
       @open="handleOpen"
       @close="handleClose"
       :collapse="isCollapse"
-      background-color="#d3dce6"
-      text-color="#444"
-      active-text-color="red"
+      v-bind="getMenuColor()"
     >
       <MenuItem :menu="menu" v-for="(menu, i) in menus" :key="menu.path" />
     </el-menu>
@@ -20,6 +18,7 @@ import appStore from "/@/store/modules/app";
 import { menuStore } from "../../../store/modules/menu";
 import { MenuModel } from "/@/types/router/menu";
 import MenuItem from "./MenuItem.vue";
+import { getMenuColor } from "/@/theme/menu";
 
 export default defineComponent({
   components: { MenuItem },
@@ -40,14 +39,29 @@ export default defineComponent({
       isCollapse,
       handleOpen,
       handleClose,
+      getMenuColor,
     };
   },
 });
 </script>
 
 <style lang="less" scoped>
+.scrollbar-wrapper {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
-  min-height: 400px;
+  height: 100%;
+}
+
+.el-menu {
+  border: 0;
+}
+
+/deep/ .el-scrollbar__view {
+  height: 100% !important;
 }
 </style>

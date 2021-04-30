@@ -40,7 +40,7 @@ export default defineComponent({
       loading.value = true;
       formRef.value.validate(async (valid: any) => {
         if (valid) {
-          await userStore.loginAction(formData);
+          await userStore.loginAction(formData as any);
         } else {
           ElMessage.error("用户名或密码错误！");
           return false;

@@ -1,0 +1,41 @@
+.for-loop(@index) when (@index > 0) {
+  /* recursive mixin with guard expression - condition */
+
+  /* the statement */
+  .wm-l-@{index} {
+    margin-left: @index * 1px !important;
+  }
+
+  .wm-r-@{index} {
+    margin-right: @index * 1px !important;
+  }
+
+  .wm-t-@{index} {
+    margin-top: @index * 1px !important;
+  }
+
+  .wm-b-@{index} {
+    margin-bottom: @index * 1px !important;
+  }
+
+  .wp-l-@{index} {
+    margin-left: @index * 1px !important;
+  }
+
+  .wp-r-@{index} {
+    margin-right: @index * 1px !important;
+  }
+
+  .wp-t-@{index} {
+    margin-top: @index * 1px !important;
+  }
+
+  .wp-b-@{index} {
+    margin-bottom: @index * 1px !important;
+  }
+
+  /* end of the statement */
+
+  .for-loop(@index - 1); /* the next iteration's call - final-expression */
+}
+.for-loop(100);

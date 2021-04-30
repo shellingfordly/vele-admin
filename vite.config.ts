@@ -28,6 +28,16 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         }
       }
     },
+    css: {
+      preprocessorOptions: {
+        less: {
+          modifyVars: {
+            hack: `true; @import (reference) "${resolve('src/style/global/config.less')}";`,
+          },
+          javascriptEnabled: true,
+        }
+      }
+    },
     plugins: createVitePlugins(viteEnv),
     optimizeDeps: {
       include: ['nprogress', 'md5']

@@ -78,12 +78,12 @@ export default defineComponent({
       },
     ];
 
-    const res = arr.reduce((a, b) => {
-      console.log(a,b);
+    // const res = arr.reduce((a, b) => {
+    //   console.log(a,b);
       
-      return a.value + b.value;
-    });
-    console.log("res", res);
+    //   return a.value + b.value;
+    // });
+    // console.log("res", res);
 
     return {
       onClick,
