@@ -29,7 +29,8 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .breadcrumb {
-  .el-icon-s-fold {
+  .el-icon-s-fold,
+  .el-icon-s-unfold {
     cursor: pointer;
   }
 }

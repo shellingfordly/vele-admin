@@ -1,6 +1,24 @@
 <template>
   <div>
     <div>Home {{ aaa }}</div>
+    <div :class="[getClass]">
+    <div :class="[`${getClass}-top`]">
+      <div :class="[`${getClass}-top__title`]">
+        layout-container-top__title
+      </div>
+      <div :class="[`${getClass}-top__content`]">
+        layout-container-top__content
+      </div>
+    </div>
+    <div :class="[`${getClass}-bot`]">
+      <div :class="[`${getClass}-bot__title`]">
+        layout-container-bot__title
+      </div>
+      <div :class="[`${getClass}-bot__content`]">
+        layout-container-bot__content
+      </div>
+    </div>
+  </div>
     <div>
       <ul>
         <li v-for="v in obj">
@@ -11,7 +29,7 @@
     <div>
       <el-button @click="onClick">获取用户信息</el-button>
       <el-button @click="actionDialog()">open dialog</el-button>
-      <home-form @register="registerDialog" />
+      <home-dialog @register="registerDialog" />
     </div>
     <div>
       <el-button @click="() => actionDrawer()">打开 Drawer</el-button>
@@ -32,12 +50,12 @@ import { useDialog } from "../../components/dialog/useDialog";
 import { useDrawer } from "/@/components/drawer/useDrawer";
 import { defineComponent, onMounted } from "vue";
 import { userStore } from "/@/store/modules/user";
-import HomeForm from "./components/HomeForm.vue";
+import HomeDialog from "./components/HomeDialog.vue";
 import HomeDrawer from "./components/HomeDrawer.vue";
 import Switch from "/@/components/switch/Switch.vue";
 
 export default defineComponent({
-  components: { HomeForm, HomeDrawer, Switch },
+  components: { HomeDialog, HomeDrawer, Switch },
   setup() {
     const [registerDialog, { actionDialog }] = useDialog({ title: "sss" });
     const [registerDrawer, { actionDrawer }] = useDrawer({ title: "测试" });
@@ -46,51 +64,18 @@ export default defineComponent({
       const userInfo = await userStore.getUserInfoAction();
       console.log(userInfo);
     }
+    const getClass = "layout-container"
 
     onMounted(() => {});
 
-    class Int extends Number {
-      _value;
-      constructor(_value: number) {
-        super();
-        this._value = _value;
-      }
-
-      value() {
-        return this._value;
-      }
-
-      format() {
-        return this.value + "%";
-      }
-    }
-
-    // function fn(...a: Int[]) {
-    //   a.reduce((a, b) => a.value + b.value);
-    // }
-
-    const arr = [
-      {
-        value: 1,
-      },
-      {
-        value: 2,
-      },
-    ];
-
-    // const res = arr.reduce((a, b) => {
-    //   console.log(a,b);
-      
-    //   return a.value + b.value;
-    // });
-    // console.log("res", res);
-
+    
     return {
       onClick,
       registerDialog,
       actionDialog,
       registerDrawer,
       actionDrawer,
+      getClass
     };
   },
 });

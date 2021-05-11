@@ -5,6 +5,8 @@ import { menuStore } from '../store/modules/menu'
 
 export default function parseMenu(routes: AppRouteRecordRaw[]) {
   const menus = traverse(routes)
+  console.log('menus', menus);
+  
   menuStore.setMenusAction(menus)
 }
 
@@ -19,7 +21,8 @@ function traverse(routes: AppRouteRecordRaw[], path = '') {
     if(!route.meta.hideMenu) {
       const menu: MenuModel = {
         path: path ? parsePath([path, route.path]) : route.path,
-        name: route.meta.title,
+        title: route.meta.title,
+        name: route.name,
         icon: route.meta.icon || '',
         children: []
       }

@@ -1,7 +1,7 @@
 <template>
   <el-scrollbar wrap-class="scrollbar-wrapper">
     <el-menu
-      default-active="1-4-1"
+      :default-active="defaultActive"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
@@ -13,18 +13,24 @@
   </el-scrollbar>
 </template>
 <script lang="ts">
-import { computed, ComputedRef, defineComponent } from "vue";
+import { computed, ComputedRef, defineComponent, watch } from "vue";
 import appStore from "/@/store/modules/app";
 import { menuStore } from "../../../store/modules/menu";
 import { MenuModel } from "/@/types/router/menu";
 import MenuItem from "./MenuItem.vue";
 import { getMenuColor } from "/@/theme/menu";
+import { useRoute } from "vue-router";
 
 export default defineComponent({
   components: { MenuItem },
   setup() {
     const isCollapse = computed(() => appStore.getIsCollapse);
     const menus: ComputedRef<MenuModel[]> = computed(() => menuStore.getMenus);
+    const route = useRoute();
+    const defaultActive = route.name;
+    console.log('defaultActive',defaultActive);
+    
+
 
     function handleOpen(key: any, keyPath: any) {
       console.log(key, keyPath);
@@ -40,6 +46,7 @@ export default defineComponent({
       handleOpen,
       handleClose,
       getMenuColor,
+      defaultActive,
     };
   },
 });
