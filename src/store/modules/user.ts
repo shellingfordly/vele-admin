@@ -7,6 +7,7 @@ import { TOKEN_KEY, USER_INFO_KEY } from '/@/enums/cacheEnum'
 import store from '/@/store';
 import router from '/@/router';
 import { loginApi, getUserInfo } from '/@/api'
+import { ElMessageBox } from 'element-plus';
 
 const NAME = 'user';
 
@@ -48,6 +49,8 @@ export default class User extends VuexModule {
   async loginAction(params: UserInfoModel) {
     try {
       const token = await loginApi(params)
+      console.log('loginAction token', token);
+      
       this.commitToken(token)
 
       const userInfo = await this.getUserInfoAction();
@@ -67,9 +70,22 @@ export default class User extends VuexModule {
 
   @Action
   async getUserInfoAction() {
-    const userInfo: any = await getUserInfo()
+    const userInfo: any = await getUserInfo({
+      token: 'token__token'
+    })
     this.commitUserInfo(userInfo)
     return userInfo
+  }
+
+
+  @Action
+  async confirmLoginOut() {
+    ElMessageBox.confirm('温馨提示', '是否确认退出系统？', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消'
+    }).then(() => {
+      this.logout(true)
+    })
   }
 }
 

@@ -2,23 +2,23 @@
   <div>
     <div>Home {{ aaa }}</div>
     <div :class="[getClass]">
-    <div :class="[`${getClass}-top`]">
-      <div :class="[`${getClass}-top__title`]">
-        layout-container-top__title
+      <div :class="[`${getClass}-top`]">
+        <div :class="[`${getClass}-top__title`]">
+          layout-container-top__title
+        </div>
+        <div :class="[`${getClass}-top__content`]">
+          layout-container-top__content
+        </div>
       </div>
-      <div :class="[`${getClass}-top__content`]">
-        layout-container-top__content
+      <div :class="[`${getClass}-bot`]">
+        <div :class="[`${getClass}-bot__title`]">
+          layout-container-bot__title
+        </div>
+        <div :class="[`${getClass}-bot__content`]">
+          layout-container-bot__content
+        </div>
       </div>
     </div>
-    <div :class="[`${getClass}-bot`]">
-      <div :class="[`${getClass}-bot__title`]">
-        layout-container-bot__title
-      </div>
-      <div :class="[`${getClass}-bot__content`]">
-        layout-container-bot__content
-      </div>
-    </div>
-  </div>
     <div>
       <ul>
         <li v-for="v in obj">
@@ -53,29 +53,34 @@ import { userStore } from "/@/store/modules/user";
 import HomeDialog from "./components/HomeDialog.vue";
 import HomeDrawer from "./components/HomeDrawer.vue";
 import Switch from "/@/components/switch/Switch.vue";
+import { getTest } from "/@/api";
 
 export default defineComponent({
   components: { HomeDialog, HomeDrawer, Switch },
   setup() {
     const [registerDialog, { actionDialog }] = useDialog({ title: "sss" });
     const [registerDrawer, { actionDrawer }] = useDrawer({ title: "测试" });
+    const getClass = "layout-container";
 
     async function onClick() {
       const userInfo = await userStore.getUserInfoAction();
       console.log(userInfo);
     }
-    const getClass = "layout-container"
 
-    onMounted(() => {});
+    async function test() {
+      const test = await getTest()
+      console.log('test', test);
+    }
 
-    
+    onMounted(test);
+
     return {
       onClick,
       registerDialog,
       actionDialog,
       registerDrawer,
       actionDrawer,
-      getClass
+      getClass,
     };
   },
 });

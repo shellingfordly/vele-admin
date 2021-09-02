@@ -5,6 +5,7 @@ import App from './App.vue'
 import setup from './setup'
 import 'element-plus/lib/theme-chalk/index.css';
 import './style/index.less'
+import './mock'
 
 const app = createApp(App)
 

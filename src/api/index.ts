@@ -2,10 +2,9 @@ import http from '../utils/http';
 import { RrrorMessageEnum } from '/@/enums/httpEnum';
 
 enum Api {
-  Login = '/register/auth.login/1.0.0',
-  Logout = '/register/auth.logout/1.0.0',
-  ImageCode = '/register/auth.captcha/1.0.0',
-  GetUserInfo = '/register/auth.info/1.0.0',
+  Login = '/login',
+  Logout = '/logout',
+  GetUserInfo = '/getuserinfo',
 }
 
 /**
@@ -36,23 +35,15 @@ export function logoutApi(params: {} = {}) {
   });
 }
 
-/**
- * @description: getImageCode
- */
-export function getImageCode(params = {}) {
-  return http.request<any>({
-    url: Api.ImageCode,
-    method: 'GET',
-    params,
-  });
-}
 
 /**
  * @description: getUserInfo
  */
-export function getUserInfo() {
-  return http.request<any>({
-    url: Api.GetUserInfo,
-    method: 'GET',
-  });
+export function getUserInfo(params: any) {
+  return http.get<any>(Api.GetUserInfo, params);
+}
+
+
+export function getTest() {
+  return http.get('/test')
 }

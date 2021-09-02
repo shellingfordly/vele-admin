@@ -4,6 +4,7 @@ import { createScrollGuard } from './scrollGuard'
 import { createMessageGuard } from './messageGuard'
 import { createHttpGuard } from './httpGuard'
 import { createTitleGuard } from './titleGuard'
+import { createRolesGuard } from './rolesGuard'
 
 export default function createGuard(router: Router) {
   createHttpGuard(router)
@@ -11,4 +12,5 @@ export default function createGuard(router: Router) {
   createMessageGuard(router)
   createTitleGuard(router)
   createPermissionGuard(router);
+  createRolesGuard(router)
 }

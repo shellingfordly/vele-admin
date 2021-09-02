@@ -5,8 +5,6 @@ import { menuStore } from '../store/modules/menu'
 
 export default function parseMenu(routes: AppRouteRecordRaw[]) {
   const menus = traverse(routes)
-  console.log('menus', menus);
-  
   menuStore.setMenusAction(menus)
 }
 

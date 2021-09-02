@@ -136,19 +136,19 @@ export class Http {
     });
   }
 
-  get<T = any>(url: string, params: any, options?: RequestOptions): Promise<T> {
+  get<T = any>(url: string, params?: any, options?: RequestOptions): Promise<T> {
     return this.request({ url, params, method: RequestEnum.GET }, options);
   }
 
-  post<T = any>(url: string, params: any, options?: RequestOptions): Promise<T> {
+  post<T = any>(url: string, params?: any, options?: RequestOptions): Promise<T> {
     return this.request({ url, params, method: RequestEnum.POST }, options);
   }
 
-  put<T = any>(url: string, params: any, options?: RequestOptions): Promise<T> {
+  put<T = any>(url: string, params?: any, options?: RequestOptions): Promise<T> {
     return this.request({ url, params, method: RequestEnum.PUT }, options);
   }
 
-  delete<T = any>(url: string, params: any, options?: RequestOptions): Promise<T> {
+  delete<T = any>(url: string, params?: any, options?: RequestOptions): Promise<T> {
     return this.request({ url, params, method: RequestEnum.DELETE }, options);
   }
 
@@ -156,7 +156,7 @@ export class Http {
 
 function createHttp(config: Partial<CreateAxiosOptions> = {}) {
   return new Http({
-    baseURL: '/test/api/gravity',
+    // baseURL: '/test/api/gravity',
     timeout: 10000,
     withCredentials: true,
     headers: {

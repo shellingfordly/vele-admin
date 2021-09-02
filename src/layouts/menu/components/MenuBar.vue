@@ -13,7 +13,7 @@
   </el-scrollbar>
 </template>
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, watch } from "vue";
+import { computed, ComputedRef, defineComponent } from "vue";
 import appStore from "/@/store/modules/app";
 import { menuStore } from "../../../store/modules/menu";
 import { MenuModel } from "/@/types/router/menu";
@@ -28,9 +28,6 @@ export default defineComponent({
     const menus: ComputedRef<MenuModel[]> = computed(() => menuStore.getMenus);
     const route = useRoute();
     const defaultActive = route.name;
-    console.log('defaultActive',defaultActive);
-    
-
 
     function handleOpen(key: any, keyPath: any) {
       console.log(key, keyPath);

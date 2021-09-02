@@ -22,7 +22,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     server: {
       proxy: {
         '/test': {
-          target: 'https://all-w1.cosmeapp.com/test',
+          target: 'http://localhost:3000/',
           changeOrigin: true,
           rewrite: (path: any) => path.replace(/^\/test/, '')
         }

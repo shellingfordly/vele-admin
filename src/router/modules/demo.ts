@@ -30,6 +30,15 @@ const demoRoutes: AppRouteRecordRaw[] = [
           title: 'useData',
         },
       },
+
+      {
+        path: 'setup',
+        name: 'Setup',
+        component: () => import('/@/views/demo/setup/index.vue'),
+        meta: {
+          title: 'Setup',
+        },
+      },
     ]
   },
 ]
