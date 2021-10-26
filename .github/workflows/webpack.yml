@@ -7,7 +7,7 @@ on:
     branches: [README.md, LICENSE]
 
 env:
-  out-dir: vue3-element-plus-admin
+  out-dir: vue3-admin
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x, 16.x]
 
     steps:
       - name: 同步仓库
