@@ -2,27 +2,32 @@ name: NodeJS with Webpack
 
 on:
   push:
-    branches: [ dev ]
+    branches: [dev]
   pull_request:
-    branches: [ README.md, LICENSE ]
+    branches: [README.md, LICENSE]
+
+env:
+  out-dir: vue3-element-plus-admin
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: 构建项目
+    runs-on: windows-latest
 
     strategy:
       matrix:
         node-version: [12.x, 14.x, 16.x]
-    
+
     steps:
-    - uses: actions/checkout@v2
+      - name: 同步仓库
+        uses: actions/checkout@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: 安装node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Build
-      run: |
-        npm install
-        npx webpack
+      - name: Build
+        run: |
+          yarn
+          yarn build
