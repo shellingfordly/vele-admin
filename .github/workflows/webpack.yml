@@ -28,6 +28,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Build
-        run: |
-          yarn
-          yarn build
+      - run: yarn
+      - run: yarn build
+      - run: cd ./${{env.out.dir}}
+      - name: 提交到pages分支
+        uses: peaceiris/actions-pages@v3
+        # with:
+        #   github_token: ${{secrets.GITHUB_TOKEN}}
+        #   publish_dir: ./${{env.out-dir}}
