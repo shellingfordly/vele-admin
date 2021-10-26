@@ -1,30 +1,15 @@
 <template>
   <div>
-    <div>Home {{ aaa }}</div>
+    <div>Home</div>
     <div :class="[getClass]">
       <div :class="[`${getClass}-top`]">
-        <div :class="[`${getClass}-top__title`]">
-          layout-container-top__title
-        </div>
-        <div :class="[`${getClass}-top__content`]">
-          layout-container-top__content
-        </div>
+        <div :class="[`${getClass}-top__title`]">layout-container-top__title</div>
+        <div :class="[`${getClass}-top__content`]">layout-container-top__content</div>
       </div>
       <div :class="[`${getClass}-bot`]">
-        <div :class="[`${getClass}-bot__title`]">
-          layout-container-bot__title
-        </div>
-        <div :class="[`${getClass}-bot__content`]">
-          layout-container-bot__content
-        </div>
+        <div :class="[`${getClass}-bot__title`]">layout-container-bot__title</div>
+        <div :class="[`${getClass}-bot__content`]">layout-container-bot__content</div>
       </div>
-    </div>
-    <div>
-      <ul>
-        <li v-for="v in obj">
-          {{ v }}
-        </li>
-      </ul>
     </div>
     <div>
       <el-button @click="onClick">获取用户信息</el-button>
@@ -37,10 +22,10 @@
     </div>
     <div>
       <Switch>
-        <template #1> 1 </template>
-        <template #2> 2 </template>
-        <template #3> 3 </template>
-        <template #default> default </template>
+        <template #1>1</template>
+        <template #2>2</template>
+        <template #3>3</template>
+        <template #default>default</template>
       </Switch>
     </div>
   </div>

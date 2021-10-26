@@ -3,15 +3,13 @@
     <el-dropdown>
       <div class="el-dropdown-link">
         <el-icon class="el-icon-user-solid" />
-        <span class="user-name">{{ userInfo.name }}</span>
+        <span class="user-name">{{ userInfo.username }}</span>
         <i class="el-icon-arrow-down el-icon--right"></i>
       </div>
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item icon="el-icon-user">个人中心</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-switch-button" @click="logout">
-            登出
-          </el-dropdown-item>
+          <el-dropdown-item icon="el-icon-switch-button" @click="logout">登出</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>

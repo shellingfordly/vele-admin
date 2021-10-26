@@ -1,8 +1,8 @@
-import type { UserConfig, ConfigEnv } from 'vite';
-import { loadEnv } from 'vite';
-import { resolve } from 'path'
-import { createVitePlugins } from './build/vite/plugins'
-import { wrapperEnv } from './build/vite/env'
+import type { UserConfig, ConfigEnv } from "vite";
+import { loadEnv } from "vite";
+import { resolve } from "path";
+import { createVitePlugins } from "./build/vite/plugins";
+import { wrapperEnv } from "./build/vite/env";
 
 export default ({ mode }: ConfigEnv): UserConfig => {
   const root = process.cwd();
@@ -15,33 +15,34 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       alias: [
         {
           find: /^\/@\//,
-          replacement: `${resolve(__dirname, './src')}/`,
+          replacement: `${resolve(__dirname, "./src")}/`,
         },
       ],
     },
     server: {
       proxy: {
-        '/test': {
-          target: 'http://localhost:3000/',
+        "/test": {
+          target: "http://localhost:3000/",
           changeOrigin: true,
-          rewrite: (path: any) => path.replace(/^\/test/, '')
-        }
-      }
+          rewrite: (path: any) => path.replace(/^\/test/, ""),
+        },
+      },
     },
     css: {
       preprocessorOptions: {
         less: {
           modifyVars: {
-            hack: `true; @import (reference) "${resolve('src/style/global/config.less')}";`,
+            hack: `true; @import (reference) "${resolve(
+              "src/style/global/config.less"
+            )}";`,
           },
           javascriptEnabled: true,
-        }
-      }
+        },
+      },
     },
     plugins: createVitePlugins(viteEnv),
     optimizeDeps: {
-      include: ['nprogress', 'md5']
-
+      include: ["nprogress", "md5"],
     },
-  }
-}
+  };
+};

@@ -1,22 +1,29 @@
-import { ContentTypeEnum, RequestEnum, ResultEnum, RrrorMessageEnum } from '/@/enums/httpEnum';
-import type { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { RequestOptions, Result } from '/@/types/http';
-import { ElNotification, ElMessage } from 'element-plus'
-import { userStore } from '/@/store/modules/user';
-import { isString } from '../help/is';
-import { createNow, formatRequestDate } from '../help/http';
-import { errorResult, errorMessage } from './const'
-import qs from 'qs'
-
+import {
+  ContentTypeEnum,
+  RequestEnum,
+  ResultEnum,
+  RrrorMessageEnum,
+} from "/@/enums/httpEnum";
+import type { AxiosRequestConfig, AxiosResponse } from "axios";
+import { RequestOptions, Result } from "/@/types/http";
+import { ElNotification, ElMessage } from "element-plus";
+import { userStore } from "/@/store/modules/user";
+import { isString } from "../help/is";
+import { createNow, formatRequestDate } from "../help/http";
+import { errorResult, errorMessage } from "./const";
+import qs from "qs";
 
 function isSuccess(code: number) {
   return 10000 + (code % 10000) === ResultEnum.SUCCESS;
 }
 
 /**
-   * @description: 请求之前处理config
-   */
-export function beforeRequestHook(config: AxiosRequestConfig, options: RequestOptions) {
+ * @description: 请求之前处理config
+ */
+export function beforeRequestHook(
+  config: AxiosRequestConfig,
+  options: RequestOptions
+) {
   const { isCacheData, apiUrl, formatDate } = options;
 
   if (apiUrl && isString(apiUrl)) {
@@ -27,10 +34,12 @@ export function beforeRequestHook(config: AxiosRequestConfig, options: RequestOp
   if (config.method?.toUpperCase() === RequestEnum.GET) {
     if (!isString(params)) {
       // 是否从缓存中拿数据，如果不，则给 get 请求加上时间戳参数
-      !isCacheData && (config.params = Object.assign(params || {}, createNow(false)));
+      !isCacheData &&
+        (config.params = Object.assign(params || {}, createNow(false)));
     } else {
       // 兼容restful风格
-      config.url = config.url + params + `${isCacheData ? '' : createNow(true)}`;
+      config.url =
+        config.url + params + `${isCacheData ? "" : createNow(true)}`;
       config.params = undefined;
     }
   } else {
@@ -48,9 +57,12 @@ export function beforeRequestHook(config: AxiosRequestConfig, options: RequestOp
 }
 
 /**
-  * @description: 处理请求数据
-  */
-export const transformRequestHook = (res: AxiosResponse<Result>, options: RequestOptions) => {
+ * @description: 处理请求数据
+ */
+export const transformRequestHook = (
+  res: AxiosResponse<Result>,
+  options: RequestOptions
+) => {
   const { isTransformRequestResult } = options;
   // 不进行任何处理，直接返回
   // 用于页面代码可能需要直接获取code，data，message这些信息时开启
@@ -74,8 +86,8 @@ export const transformRequestHook = (res: AxiosResponse<Result>, options: Reques
     if (msg) {
       // errorMessageMode=‘modal’的时候会显示modal错误弹窗，而不是消息提示，用于一些比较重要的错误
       if (options.errorMessageMode === RrrorMessageEnum.MODEL) {
-        ElNotification({ title: '错误提示', message: msg });
-      } else if (options.errorMessageMode === 'message') {
+        ElNotification({ title: "错误提示", message: msg });
+      } else if (options.errorMessageMode === "message") {
         ElMessage.error(msg);
       }
     }
@@ -89,9 +101,9 @@ export const transformRequestHook = (res: AxiosResponse<Result>, options: Reques
   }
   // 登录超时
   if (code === ResultEnum.TIMEOUT) {
-    const timeoutMsg = '登录超时,请重新登录!'
+    const timeoutMsg = "登录超时,请重新登录!";
     ElNotification({
-      title: '操作失败',
+      title: "操作失败",
       message: timeoutMsg,
     });
     Promise.reject(new Error(timeoutMsg));
@@ -103,33 +115,33 @@ export const transformRequestHook = (res: AxiosResponse<Result>, options: Reques
       ElMessage.error(msg);
       Promise.reject(new Error(msg));
     } else {
-      const msg = '操作失败,系统异常!';
+      const msg = "操作失败,系统异常!";
       ElMessage.error(msg);
       Promise.reject(new Error(msg));
     }
     return errorResult;
   }
   return errorResult;
-}
+};
 
 /**
-  * @description: 请求失败
-  */
+ * @description: 请求失败
+ */
 export function requestCatchHook(err: any) {
-  return err
+  return err;
 }
 
 /**
-  * @description: 请求失败
-  */
+ * @description: 请求失败
+ */
 
 export function supportFormData(config: AxiosRequestConfig) {
   const headers = config?.headers;
-  const contentType = headers?.['Content-Type'] || headers?.['content-type'];
+  const contentType = headers?.["Content-Type"] || headers?.["content-type"];
 
   if (
     contentType !== ContentTypeEnum.FORM_URLENCODED ||
-    !Reflect.has(config, 'data') ||
+    !Reflect.has(config, "data") ||
     config.method?.toUpperCase() === RequestEnum.GET
   ) {
     return config;
@@ -146,19 +158,20 @@ export function supportFormData(config: AxiosRequestConfig) {
  */
 export function requestInterceptorsCatch(error: any) {
   const { response } = error || {};
-  const msg: string = response?.data?.error?.message ?? '';
-  const err: string = error?.toString?.() ?? '';
+  const msg: string = response?.data?.error?.message ?? "";
+  const err: string = error?.toString?.() ?? "";
   if (response) {
-    checkStatus(error?.response?.status, msg)
+    checkStatus(error?.response?.status, msg);
     return Promise.reject(response);
   }
 
-  if (!(window.navigator as any).online) { // 断网处理
-    checkStatus(502)
+  if (!(window.navigator as any).online) {
+    // 断网处理
+    checkStatus(502);
     return -1;
   }
 
-  return Promise.reject(err)
+  return Promise.reject(err);
 }
 
 /**
@@ -166,25 +179,25 @@ export function requestInterceptorsCatch(error: any) {
  */
 export function responseInterceptorsCatch(error: any) {
   const { response, code, message } = error || {};
-  const msg: string = response?.data?.error?.message ?? '';
-  const err: string = error?.toString?.() ?? '';
+  const msg: string = response?.data?.error?.message ?? "";
+  const err: string = error?.toString?.() ?? "";
   try {
-    if (code === 'ECONNABORTED' && message.indexOf('timeout') !== -1) {
+    if (code === "ECONNABORTED" && message.indexOf("timeout") !== -1) {
       ElNotification({
-        title: '请求失败',
+        title: "请求失败",
         message: error.message,
-        type: 'error'
+        type: "error",
       });
     }
-    if (err?.includes('Network Error')) {
+    if (err?.includes("Network Error")) {
       ElNotification({
-        title: '网络异常',
-        message: '请检查您的网络连接是否正常！',
-        type: 'error'
-      })
+        title: "网络异常",
+        message: "请检查您的网络连接是否正常！",
+        type: "error",
+      });
     }
   } catch (error) {
-    throw new Error(error);
+    throw new Error(error as string);
   }
   checkStatus(error?.response?.status, msg);
   return Promise.reject(error);
@@ -199,41 +212,40 @@ function checkStatus(status: number, msg?: string) {
       ElMessage.error(msg);
       break;
     case 401:
-      ElMessage.error(errorMessage['401']);
+      ElMessage.error(errorMessage["401"]);
       userStore.logout();
       break;
     case 403:
-      ElMessage.error(errorMessage['403']);
+      ElMessage.error(errorMessage["403"]);
       break;
     // 404请求不存在
     case 404:
-      ElMessage.error(errorMessage['404']);
+      ElMessage.error(errorMessage["404"]);
       break;
     case 405:
-      ElMessage.error(errorMessage['405']);
+      ElMessage.error(errorMessage["405"]);
       break;
     case 408:
-      ElMessage.error(errorMessage['408']);
+      ElMessage.error(errorMessage["408"]);
       break;
     case 500:
-      ElMessage.error(errorMessage['500']);
+      ElMessage.error(errorMessage["500"]);
       break;
     case 501:
-      ElMessage.error(errorMessage['501']);
+      ElMessage.error(errorMessage["501"]);
       break;
     case 502:
-      ElMessage.error(errorMessage['502']);
+      ElMessage.error(errorMessage["502"]);
       break;
     case 503:
-      ElMessage.error(errorMessage['503']);
+      ElMessage.error(errorMessage["503"]);
       break;
     case 504:
-      ElMessage.error(errorMessage['504']);
+      ElMessage.error(errorMessage["504"]);
       break;
     case 505:
-      ElMessage.error(errorMessage['505']);
+      ElMessage.error(errorMessage["505"]);
       break;
     default:
   }
-
 }

@@ -1,7 +1,7 @@
 <template>
   <el-scrollbar wrap-class="scrollbar-wrapper">
     <el-menu
-      :default-active="defaultActive"
+      :default-active="1"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
@@ -28,6 +28,7 @@ export default defineComponent({
     const menus: ComputedRef<MenuModel[]> = computed(() => menuStore.getMenus);
     const route = useRoute();
     const defaultActive = route.name;
+    console.log('defaultActive', defaultActive)
 
     function handleOpen(key: any, keyPath: any) {
       console.log(key, keyPath);

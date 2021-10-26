@@ -1,37 +1,41 @@
-import axios from 'axios'
-import type { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios';
-import { CreateAxiosOptions, RequestOptions, Result } from '/@/types/http'
-import { userStore } from '/@/store/modules/user';
+import axios from "axios";
+import type { AxiosRequestConfig, AxiosInstance, AxiosResponse } from "axios";
+import { CreateAxiosOptions, RequestOptions, Result } from "/@/types/http";
+import { userStore } from "/@/store/modules/user";
 import {
   responseInterceptorsCatch,
   beforeRequestHook,
   transformRequestHook,
   requestCatchHook,
   supportFormData,
-} from './transform'
-import AxiosCanceler from './cancel'
-import { deepClone } from '../help/obj';
-import { isFunc } from '../help/is';
-import { RrrorMessageEnum, RequestEnum, ContentTypeEnum } from '/@/enums/httpEnum';
-import { jsonToCamel } from './codeStyle';
-import { errorResult } from './const'
+} from "./transform";
+import AxiosCanceler from "./cancel";
+import { deepClone } from "../help/obj";
+import { isFunc } from "../help/is";
+import {
+  RrrorMessageEnum,
+  RequestEnum,
+  ContentTypeEnum,
+} from "/@/enums/httpEnum";
+import { jsonToCamel } from "./codeStyle";
+import { errorResult } from "./const";
 
 export class Http {
-  private config: CreateAxiosOptions
-  private instance: AxiosInstance
+  private config: CreateAxiosOptions;
+  private instance: AxiosInstance;
 
   constructor(config: CreateAxiosOptions) {
-    this.config = config
-    this.instance = axios.create(config)
-    this.setInterceptors(this.instance)
+    this.config = config;
+    this.instance = axios.create(config);
+    this.setInterceptors(this.instance);
   }
 
   get getConfig() {
-    return this.config
+    return this.config;
   }
 
   get getinstance() {
-    return this.instance
+    return this.instance;
   }
 
   /**
@@ -40,7 +44,6 @@ export class Http {
   private create(config: CreateAxiosOptions): void {
     this.instance = axios.create(config);
   }
-
 
   /**
    * @description: 设置请求头
@@ -56,9 +59,9 @@ export class Http {
    * @description: 拦截器 配置
    */
   private setInterceptors(instance: AxiosInstance) {
-    const axiosCanceler = new AxiosCanceler()
+    const axiosCanceler = new AxiosCanceler();
     // 请求拦截器
-    instance.interceptors.request.use(config => {
+    instance.interceptors.request.use((config) => {
       // 添加loading
 
       const {
@@ -73,20 +76,18 @@ export class Http {
       !ignoreCancel && axiosCanceler.addPending(config);
 
       // 配置token
-      config.headers.Authorization = userStore.getTokenState || ''
-
+      config.headers.Authorization = userStore.getTokenState || "";
 
       return config;
-    }, undefined)
-
+    }, undefined);
 
     // 响应结束
-    instance.interceptors.response.use(response => {
+    instance.interceptors.response.use((response) => {
       // 移除请求
       response && axiosCanceler.removePending(response.config);
 
-      return response
-    }, responseInterceptorsCatch)
+      return response;
+    }, responseInterceptorsCatch);
   }
 
   /**
@@ -99,11 +100,13 @@ export class Http {
     this.create(config);
   }
 
-
   /**
    * @description: 发起请求
    */
-  request<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
+  request<T = any>(
+    config: AxiosRequestConfig,
+    options?: RequestOptions
+  ): Promise<T> {
     let conf: AxiosRequestConfig = deepClone(config);
 
     const { requestOptions } = this.config;
@@ -120,11 +123,13 @@ export class Http {
           if (transformRequestHook && isFunc(transformRequestHook)) {
             const ret = transformRequestHook(res, opt);
             jsonToCamel(ret, false);
-            ret !== errorResult ? resolve(ret) : reject(new Error('request error!'));
+            ret !== errorResult
+              ? resolve(ret)
+              : reject(new Error("request error!"));
             return;
           }
           jsonToCamel(res, false);
-          resolve((res as unknown) as Promise<T>);
+          resolve(res as unknown as Promise<T>);
         })
         .catch((e: Error) => {
           if (requestCatchHook && isFunc(requestCatchHook)) {
@@ -136,22 +141,37 @@ export class Http {
     });
   }
 
-  get<T = any>(url: string, params?: any, options?: RequestOptions): Promise<T> {
+  get<T = any>(
+    url: string,
+    params?: any,
+    options?: RequestOptions
+  ): Promise<T> {
     return this.request({ url, params, method: RequestEnum.GET }, options);
   }
 
-  post<T = any>(url: string, params?: any, options?: RequestOptions): Promise<T> {
+  post<T = any>(
+    url: string,
+    params?: any,
+    options?: RequestOptions
+  ): Promise<T> {
     return this.request({ url, params, method: RequestEnum.POST }, options);
   }
 
-  put<T = any>(url: string, params?: any, options?: RequestOptions): Promise<T> {
+  put<T = any>(
+    url: string,
+    params?: any,
+    options?: RequestOptions
+  ): Promise<T> {
     return this.request({ url, params, method: RequestEnum.PUT }, options);
   }
 
-  delete<T = any>(url: string, params?: any, options?: RequestOptions): Promise<T> {
+  delete<T = any>(
+    url: string,
+    params?: any,
+    options?: RequestOptions
+  ): Promise<T> {
     return this.request({ url, params, method: RequestEnum.DELETE }, options);
   }
-
 }
 
 function createHttp(config: Partial<CreateAxiosOptions> = {}) {
@@ -160,21 +180,19 @@ function createHttp(config: Partial<CreateAxiosOptions> = {}) {
     timeout: 10000,
     withCredentials: true,
     headers: {
-      'Content-Type': ContentTypeEnum.JSON,
-      'sateway-app-id': 'app_ry92remq8j'
+      "Content-Type": ContentTypeEnum.JSON,
     },
     requestOptions: {
       isTransformRequestResult: true, // 是否对返回数据进行处理
       formatDate: true, // 格式化提交参数时间
-      apiUrl: '', // 接口地址
+      apiUrl: "", // 接口地址
       errorMessageMode: RrrorMessageEnum.MESSAGE, // 错误消息提示
       isCacheData: false, // 是否缓存获取的数据
       ignoreCancelToken: true, // 忽略重复请求
     },
     ...config,
-  })
-
+  });
 }
 
-const http = createHttp()
-export default http
+const http = createHttp();
+export default http;

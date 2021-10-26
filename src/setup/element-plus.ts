@@ -1,4 +1,4 @@
-import type { App } from 'vue';
+import type { App } from "vue";
 
 import {
   ElAlert,
@@ -64,7 +64,7 @@ import {
   ElSlider,
   ElStep,
   ElSteps,
-  ElSubmenu,
+  ElSubMenu,
   ElSwitch,
   ElTabPane,
   ElTable,
@@ -84,7 +84,7 @@ import {
   ElMessage,
   ElMessageBox,
   ElNotification,
-} from 'element-plus';
+} from "element-plus";
 
 const components = [
   ElAlert,
@@ -150,7 +150,7 @@ const components = [
   ElSlider,
   ElStep,
   ElSteps,
-  ElSubmenu,
+  ElSubMenu,
   ElSwitch,
   ElTabPane,
   ElTable,
@@ -165,7 +165,7 @@ const components = [
   ElTransfer,
   ElTree,
   ElUpload,
-]
+];
 
 const plugins = [
   ElInfiniteScroll,
@@ -173,15 +173,14 @@ const plugins = [
   ElMessage,
   ElMessageBox,
   ElNotification,
-]
+];
 
-export default function setupElement(app: App<Element>){
-  components.forEach(component => {
-    app.component(component.name, component)
-  })
-  
+export default function setupElement(app: App<Element>) {
+  components.forEach((component) => {
+    app.component(component.name, component);
+  });
+
   plugins.forEach((plugin: any) => {
-    app.use(plugin)
-  })
-
+    app.use(plugin);
+  });
 }

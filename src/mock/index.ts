@@ -1,42 +1,41 @@
-import { mock } from 'mockjs'
+import { mock } from "mockjs";
 
-
-mock('/login', 'post', (req: any) => {
-  const { username, password } = JSON.parse(req.body)
+mock("/login", "post", (req: any) => {
+  const { username, password } = JSON.parse(req.body);
   return mock({
     code: 10000,
-    msg: 'ok',
-    data: 'this is token'
-  })
-})
+    msg: "ok",
+    data: "this is token",
+  });
+});
 
-
-mock('/getuserinfo', 'get', (req: any) => {
-  const { token } = JSON.parse(req)
+mock("/getuserinfo", "get", (req: any) => {
+  const { token } = JSON.parse(req);
+  console.log("token", token);
 
   return mock({
     code: 10000,
-    msg: 'ok',
+    msg: "ok",
     data: {
-       token
-    }
-  })
-})
+      token,
+    },
+  });
+});
 
-mock('/test', 'get', () => {
+mock("/test", "get", () => {
   return mock({
     code: 10000,
-    msg: 'ok',
+    msg: "ok",
     data: [
       {
-        name: '1'
+        name: "1",
       },
       {
-        name: '2'
+        name: "2",
       },
       {
-        name: '3'
+        name: "3",
       },
-    ]
-  })
-})
+    ],
+  });
+});
