@@ -1,72 +1,97 @@
 <template>
-  <div>
-    <div>Home</div>
-    <div :class="[getClass]">
-      <div :class="[`${getClass}-top`]">
-        <div :class="[`${getClass}-top__title`]">layout-container-top__title</div>
-        <div :class="[`${getClass}-top__content`]">layout-container-top__content</div>
-      </div>
-      <div :class="[`${getClass}-bot`]">
-        <div :class="[`${getClass}-bot__title`]">layout-container-bot__title</div>
-        <div :class="[`${getClass}-bot__content`]">layout-container-bot__content</div>
-      </div>
-    </div>
-    <div>
-      <el-button @click="onClick">获取用户信息</el-button>
-      <el-button @click="actionDialog()">open dialog</el-button>
-      <home-dialog @register="registerDialog" />
-    </div>
-    <div>
-      <el-button @click="() => actionDrawer()">打开 Drawer</el-button>
-      <home-drawer @register="registerDrawer" />
-    </div>
-    <div>
-      <Switch>
-        <template #1>1</template>
-        <template #2>2</template>
-        <template #3>3</template>
-        <template #default>default</template>
-      </Switch>
-    </div>
-  </div>
+  <el-row :gutter="20">
+    <el-col :span="6">
+      <el-card class="box-card">
+        <template #header>
+          <div class="card-header">
+            <div>总销售额</div>
+            <el-button class="button" type="text">查看</el-button>
+          </div>
+        </template>
+        <div class="info">
+          <div>￥ 20,000,000</div>
+          <el-icon>
+            <data-analysis />
+          </el-icon>
+        </div>
+      </el-card>
+    </el-col>
+    <el-col :span="6">
+      <el-card class="box-card">
+        <template #header>
+          <div class="card-header">
+            <div>总支出</div>
+            <el-button class="button" type="text">查看</el-button>
+          </div>
+        </template>
+        <div class="info">
+          <div>￥ 100,000</div>
+          <el-icon>
+            <trophy />
+          </el-icon>
+        </div>
+      </el-card>
+    </el-col>
+    <el-col :span="6">
+      <el-card class="box-card">
+        <template #header>
+          <div class="card-header">
+            <div>总销量</div>
+            <el-button class="button" type="text">查看</el-button>
+          </div>
+        </template>
+        <div class="info">
+          <div>￥ 500,000</div>
+          <el-icon>
+            <sell />
+          </el-icon>
+        </div>
+      </el-card>
+    </el-col>
+    <el-col :span="6">
+      <el-card class="box-card">
+        <template #header>
+          <div class="card-header">
+            <div>月销量</div>
+            <el-button class="button" type="text">查看</el-button>
+          </div>
+        </template>
+        <div class="info">
+          <div>￥ 30,000</div>
+          <el-icon>
+            <shopping-cart />
+          </el-icon>
+        </div>
+      </el-card>
+    </el-col>
+  </el-row>
 </template>
-<script lang="ts">
-import { useDialog } from "../../components/dialog/useDialog";
-import { useDrawer } from "/@/components/drawer/useDrawer";
-import { defineComponent, onMounted } from "vue";
-import { userStore } from "/@/store/modules/user";
-import HomeDialog from "./components/HomeDialog.vue";
-import HomeDrawer from "./components/HomeDrawer.vue";
-import Switch from "/@/components/switch/Switch.vue";
-import { getTest } from "/@/api";
-
-export default defineComponent({
-  components: { HomeDialog, HomeDrawer, Switch },
-  setup() {
-    const [registerDialog, { actionDialog }] = useDialog({ title: "sss" });
-    const [registerDrawer, { actionDrawer }] = useDrawer({ title: "测试" });
-    const getClass = "layout-container";
-
-    async function onClick() {
-      const userInfo = await userStore.getUserInfoAction();
-      console.log(userInfo);
-    }
-
-    async function test() {
-      const test = await getTest()
-      console.log('test', test);
-    }
-
-    onMounted(test);
-
-    return {
-      onClick,
-      registerDialog,
-      actionDialog,
-      registerDrawer,
-      actionDrawer,
-      getClass,
-    };
-  },
-});
+<script lang="ts" setup>
+import { DataAnalysis, Sell, ShoppingCart, Trophy } from '@element-plus/icons'
 </script>
+
+
+<style lang="less" scoped>
+:deep(.el-card__header) {
+  padding: 10px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+  padding: 10px 0;
+
+  svg {
+    font-size: 20px;
+  }
+}
+</style>
+
+

@@ -6,8 +6,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { defineProps } from "vue";
-
 export type DataModel = {
   name: string;
   age: number;

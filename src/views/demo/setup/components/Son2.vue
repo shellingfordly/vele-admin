@@ -4,11 +4,11 @@
     <p>{{ data.name }}</p>
     <p>{{ data.age }}</p>
     <el-button @click="onClick">son2 btn</el-button>
-    <el-button @click="emit('ok', {})">son2 btn</el-button>
+    <!-- <el-button @click="emit('ok', {})">son2 btn</el-button> -->
   </div>
 </template>
 <script setup lang="ts">
-import { defineProps, useContext } from "vue";
+// import { useAttrs } from "vue";
 
 defineProps({
   data: {
@@ -20,12 +20,13 @@ defineProps({
   },
 });
 
-const { emit } = useContext();
+
+// const { emit } = useAttrs();
 
 function onClick() {
-  emit("ok", {
-    name: "son2",
-    age: 20,
-  });
+  // emit("ok", {
+  //   name: "son2",
+  //   age: 20,
+  // });
 }
 </script>

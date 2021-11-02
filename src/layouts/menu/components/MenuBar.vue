@@ -1,14 +1,14 @@
 <template>
   <el-scrollbar wrap-class="scrollbar-wrapper">
     <el-menu
-      :default-active="1"
+      :defaultActive="defaultActive"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
       :collapse="isCollapse"
       v-bind="getMenuColor()"
     >
-      <MenuItem :menu="menu" v-for="(menu, i) in menus" :key="menu.path" />
+      <MenuItem :menu="menu" v-for="menu in menus" :key="menu.path" />
     </el-menu>
   </el-scrollbar>
 </template>
@@ -20,6 +20,7 @@ import { MenuModel } from "/@/types/router/menu";
 import MenuItem from "./MenuItem.vue";
 import { getMenuColor } from "/@/theme/menu";
 import { useRoute } from "vue-router";
+import { useGoPath } from "/@/utils/router/useRouter";
 
 export default defineComponent({
   components: { MenuItem },
@@ -28,7 +29,14 @@ export default defineComponent({
     const menus: ComputedRef<MenuModel[]> = computed(() => menuStore.getMenus);
     const route = useRoute();
     const defaultActive = route.name;
-    console.log('defaultActive', defaultActive)
+    console.log(defaultActive)
+    const goPath = useGoPath();
+
+
+    function onClick(menu: MenuModel) {
+      console.log(menu)
+      goPath(menu.path);
+    }
 
     function handleOpen(key: any, keyPath: any) {
       console.log(key, keyPath);
@@ -45,6 +53,7 @@ export default defineComponent({
       handleClose,
       getMenuColor,
       defaultActive,
+      onClick
     };
   },
 });

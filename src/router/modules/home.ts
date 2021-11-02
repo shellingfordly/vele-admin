@@ -1,29 +1,29 @@
-import type { AppRouteRecordRaw } from '/@/router/types/types';
-import { LAYOUT } from '../baseRoute'
+import type { AppRouteRecordRaw } from "/@/router/types/types";
+import { LAYOUT } from "../baseRoute";
 
 const homeRoutes: AppRouteRecordRaw[] = [
   {
-    path: '/home',
-    name: 'Home',
+    path: "/home",
+    name: "Home",
     component: LAYOUT,
-    redirect: '/home/desc',
+    redirect: "/home/index",
     meta: {
-      title: '首页',
-      icon: 'el-icon-menu',
+      title: "分析页",
+      icon: "el-icon-menu",
       menuNum: 10,
     },
     children: [
       {
-        path: 'desc',
-        name: 'Desc',
-        component: () => import('/@/views/home/Home.vue'),
+        path: "index",
+        name: "Home",
+        component: () => import("/@/views/home/Home.vue"),
         meta: {
-          title: '首页',
-          hideMenu: true
+          title: "分析页",
+          hideMenu: true,
         },
       },
-    ]
+    ],
   },
-]
+];
 
-export default homeRoutes
+export default homeRoutes;
