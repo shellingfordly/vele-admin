@@ -1,25 +1,25 @@
-import vue from '@vitejs/plugin-vue';
-import { ViteEnv } from '../types/env'
-import type { Plugin } from 'vite';
+import vue from "@vitejs/plugin-vue";
+import { ViteEnv } from "../types/env";
+import type { Plugin } from "vite";
 
 export function createVitePlugins(viteEnv: ViteEnv) {
-  const plugins: (Plugin | Plugin[])[] = [vue()]
+  const plugins: (Plugin | Plugin[])[] = [vue()];
 
-  plugins.push(configHtmlPlugin(viteEnv))
+  plugins.push(configHtmlPlugin(viteEnv));
 
-  return plugins
+  return plugins;
 }
 
 export function configHtmlPlugin(env: ViteEnv) {
-  const { VITE_APP_TITLE } = env;
+  const { VITE_APP_TITLE = "" } = env;
 
   return {
-    name: 'html-transform',
+    name: "html-transform",
     transformIndexHtml(html: any) {
       return html.replace(
         /<title>(.*?)<\/title>/,
         `<title>${VITE_APP_TITLE}</title>`
-      )
-    }
-  }
+      );
+    },
+  };
 }

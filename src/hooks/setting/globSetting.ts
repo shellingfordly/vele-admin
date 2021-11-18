@@ -1,6 +1,4 @@
-
-import { warn } from '/@/utils/help/log';
-
+import { warn } from "/@/utils/help/log";
 
 export interface GlobConfig {
   // Site title
@@ -27,11 +25,10 @@ export interface GlobEnvConfig {
   VITE_UPLOAD_URL?: string;
 }
 
-
 export const getConfigFileName = (env: Record<string, any>) => {
-  return `__PRODUCTION__${env.VITE_APP_SHORT_NAME || '__APP'}__CONF__`
+  return `__PRODUCTION__${env.VITE_APP_SHORT_NAME || "__APP"}__CONF__`
     .toUpperCase()
-    .replace(/\s/g, '');
+    .replace(/\s/g, "");
 };
 
 export function isDevMode(): boolean {
@@ -41,10 +38,11 @@ export function isDevMode(): boolean {
 export function getAppEnvConfig() {
   const ENV_NAME = getConfigFileName(import.meta.env);
 
-  const ENV = ((isDevMode()
+  const ENV = (isDevMode()
     ? // Get the global configuration (the configuration will be extracted independently when packaging)
-      ((import.meta.env as unknown) as GlobEnvConfig)
-    : window[ENV_NAME as any]) as unknown) as GlobEnvConfig;
+      (import.meta.env as unknown as GlobEnvConfig)
+    : window[ENV_NAME as any] || {}) as unknown as GlobEnvConfig;
+
   return ENV;
 }
 

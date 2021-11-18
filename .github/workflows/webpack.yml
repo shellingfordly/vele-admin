@@ -1,38 +1,22 @@
-name: NodeJS with Webpack
-
+name: Web-doc GitHub Actions Build and Deploy
 on:
   push:
-    branches: [dev]
-  pull_request:
-    branches: [README.md, LICENSE]
-
-env:
-  out-dir: vue3-admin
+    branches:
+      - main
 
 jobs:
-  build:
-    name: 构建项目
-    runs-on: windows-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
-
+  build-and-deploy:
+    runs-on: ubuntu-latest
     steps:
-      - name: 同步仓库
-        uses: actions/checkout@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
 
-      - name: 安装node
-        uses: actions/setup-node@v2
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm install
+          npm run build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Build
-      - run: yarn
-      - run: yarn build
-      - run: cd ./${{env.out.dir}}
-      - name: 提交到pages分支
-        uses: peaceiris/actions-pages@v3
-        # with:
-        #   github_token: ${{secrets.GITHUB_TOKEN}}
-        #   publish_dir: ./${{env.out-dir}}
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist # The folder the action should deploy.
