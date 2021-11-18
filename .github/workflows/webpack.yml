@@ -1,4 +1,4 @@
-name: Web-doc GitHub Actions Build and Deploy
+name: GitHub Actions Build and Deploy
 on:
   push:
     branches:
