@@ -5,12 +5,12 @@
       <span>{{ data.msg }}</span>
       <el-button size="small" @click="change">change</el-button>
     </div>
-    <div>{{parentData}}</div>
+    <div>{{ parentData }}</div>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import useData, { parentData } from "./useData";
+import useData, { parentData } from "./hooks/useData";
 
 export default defineComponent({
   name: "",
@@ -19,7 +19,7 @@ export default defineComponent({
 
     const change = () => {
       data.msg = "Son2 changed message";
-    }
+    };
 
     // setTimeout(()=>{
     //   parentData.value = 'Son2 changed parentData'

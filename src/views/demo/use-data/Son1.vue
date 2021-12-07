@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import useData, { parentData } from "./useData";
+import useData, { parentData } from "./hooks/useData";
 
 export default defineComponent({
   name: "",
@@ -19,7 +19,6 @@ export default defineComponent({
 
     change();
 
-    
     setTimeout(() => {
       parentData.value = "useData changed parentData";
     }, 4000);
