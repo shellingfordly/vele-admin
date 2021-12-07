@@ -1,10 +1,10 @@
-import http from '../utils/http';
-import { RrrorMessageEnum } from '/@/enums/httpEnum';
+import http from "../utils/http";
+import { RrrorMessageEnum } from "/@/enums/httpEnum";
 
 enum Api {
-  Login = '/login',
-  Logout = '/logout',
-  GetUserInfo = '/getuserinfo',
+  Login = "/login",
+  Logout = "/logout",
+  GetUserInfo = "/getuserinfo",
 }
 
 /**
@@ -15,7 +15,7 @@ export function loginApi(params: any, mode = RrrorMessageEnum.MODEL) {
   return http.request<string>(
     {
       url: Api.Login,
-      method: 'POST',
+      method: "POST",
       params,
     },
     {
@@ -30,11 +30,10 @@ export function loginApi(params: any, mode = RrrorMessageEnum.MODEL) {
 export function logoutApi(params: {} = {}) {
   return http.request<null>({
     url: Api.Logout,
-    method: 'POST',
+    method: "POST",
     params,
   });
 }
-
 
 /**
  * @description: getUserInfo
@@ -43,7 +42,6 @@ export function getUserInfo(params: any) {
   return http.get<any>(Api.GetUserInfo, params);
 }
 
-
 export function getTest() {
-  return http.get('/test')
+  return http.get("/test");
 }

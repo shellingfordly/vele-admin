@@ -176,7 +176,7 @@ export class Http {
 
 function createHttp(config: Partial<CreateAxiosOptions> = {}) {
   return new Http({
-    // baseURL: '/test/api/gravity',
+    baseURL: "/mock-api/",
     timeout: 10000,
     withCredentials: true,
     headers: {

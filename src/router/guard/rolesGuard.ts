@@ -3,10 +3,9 @@ import { userStore } from "/@/store/modules/user";
 import { PageEnum } from "/@/enums/pageEnum";
 
 export function createRolesGuard(router: Router) {
-  const LOGIN_PATH = PageEnum.BASE_LOGIN;
   const BASE_HOME = PageEnum.BASE_HOME;
 
-  const whitePathList: PageEnum[] = [LOGIN_PATH, BASE_HOME];
+  const whitePathList: PageEnum[] = [BASE_HOME];
 
   router.beforeEach(async (route) => {
     if (route.name && whitePathList.includes(route.path as PageEnum)) {

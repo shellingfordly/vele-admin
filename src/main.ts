@@ -5,7 +5,6 @@ import App from "./App.vue";
 import setup from "./setup";
 import "element-plus/dist/index.css";
 import "./style/index.less";
-import "./mock";
 
 const app = createApp(App);
 

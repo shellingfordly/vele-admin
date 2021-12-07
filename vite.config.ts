@@ -4,10 +4,11 @@ import { resolve } from "path";
 import { createVitePlugins } from "./build/vite/plugins";
 import { wrapperEnv } from "./build/vite/env";
 
-export default ({ mode }: ConfigEnv): UserConfig => {
+export default ({ mode, command }: ConfigEnv): UserConfig => {
   const root = process.cwd();
   const env = loadEnv(mode, root);
   const viteEnv = wrapperEnv(env);
+  const isBuild = command === "build";
 
   return {
     base: process.env.VITE_PUBLIC_PATH,
@@ -21,7 +22,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     },
     server: {
       proxy: {
-        "/test": {
+        "/mock-api": {
           target: "http://localhost:3000/",
           changeOrigin: true,
           rewrite: (path: any) => path.replace(/^\/test/, ""),
@@ -40,7 +41,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         },
       },
     },
-    plugins: createVitePlugins(viteEnv),
+    plugins: createVitePlugins(viteEnv, isBuild),
     optimizeDeps: {
       include: ["nprogress", "md5"],
     },

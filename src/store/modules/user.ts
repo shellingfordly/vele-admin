@@ -1,64 +1,68 @@
+import {
+  VuexModule,
+  getModule,
+  Module,
+  Mutation,
+  Action,
+} from "vuex-module-decorators";
+import { UserInfoModel } from "/@/types/user";
+import { CacheModel } from "/@/types/cache/cache";
+import { PageEnum } from "/@/enums/pageEnum";
+import { TOKEN_KEY, USER_INFO_KEY } from "/@/enums/cacheEnum";
+import store from "/@/store";
+import router from "/@/router";
+import { loginApi, getUserInfo } from "/@/api";
+import { ElMessageBox } from "element-plus";
 
-import { VuexModule, getModule, Module, Mutation, Action } from 'vuex-module-decorators';
-import { UserInfoModel } from '/@/types/user'
-import { CacheModel } from '/@/types/cache/cache'
-import { PageEnum } from '/@/enums/pageEnum';
-import { TOKEN_KEY, USER_INFO_KEY } from '/@/enums/cacheEnum'
-import store from '/@/store';
-import router from '/@/router';
-import { loginApi, getUserInfo } from '/@/api'
-import { ElMessageBox } from 'element-plus';
-
-const NAME = 'user';
+const NAME = "user";
 
 function getCache(key: CacheModel) {
-  return localStorage.getItem(key)
+  return localStorage.getItem(key);
 }
 
 function setCache(key: CacheModel, token: string) {
-  localStorage.setItem(key, token)
+  localStorage.setItem(key, token);
 }
 
 @Module({ dynamic: true, namespaced: true, store, name: NAME })
 export default class User extends VuexModule {
-  private token = '';
+  private token = "";
   private userInfo: Partial<UserInfoModel> = {};
 
   get getTokenState() {
-    return this.token || getCache(TOKEN_KEY)
+    return this.token || getCache(TOKEN_KEY);
   }
 
   get getUserInfoState() {
-    return this.userInfo || getCache(USER_INFO_KEY)
+    return this.userInfo || getCache(USER_INFO_KEY);
   }
 
   @Mutation
   commitToken(token: string) {
-    this.token = token
-    setCache(TOKEN_KEY, token)
+    this.token = token;
+    setCache(TOKEN_KEY, token);
   }
-
 
   @Mutation
   commitUserInfo(userInfo: UserInfoModel) {
-    this.userInfo = userInfo
-    setCache(USER_INFO_KEY, JSON.stringify(userInfo))
+    this.userInfo = userInfo;
+    setCache(USER_INFO_KEY, JSON.stringify(userInfo));
   }
 
   @Action
   async loginAction(params: UserInfoModel) {
     try {
-      const token = await loginApi(params)
-      console.log('loginAction token', token);
-      
-      this.commitToken(token)
+      const token = await loginApi(params);
+      console.log("loginAction token", token);
 
-      const userInfo = await this.getUserInfoAction();
+      this.commitToken(token);
 
-      await router.replace(PageEnum.BASE_HOME)
-      return userInfo
+      // const userInfo = await this.getUserInfoAction();
+
+      await router.replace(PageEnum.BASE_HOME);
+      // return userInfo;
     } catch (error) {
-      return null
+      return null;
     }
   }
 
@@ -67,25 +71,23 @@ export default class User extends VuexModule {
     goLogin && router.push(PageEnum.BASE_LOGIN);
   }
 
-
   @Action
   async getUserInfoAction() {
     const userInfo: any = await getUserInfo({
-      token: 'token__token'
-    })
-    this.commitUserInfo(userInfo)
-    return userInfo
+      token: "token__token",
+    });
+    this.commitUserInfo(userInfo);
+    return userInfo;
   }
-
 
   @Action
   async confirmLoginOut() {
-    ElMessageBox.confirm('温馨提示', '是否确认退出系统？', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消'
+    ElMessageBox.confirm("温馨提示", "是否确认退出系统？", {
+      confirmButtonText: "确定",
+      cancelButtonText: "取消",
     }).then(() => {
-      this.logout(true)
-    })
+      this.logout(true);
+    });
   }
 }
 

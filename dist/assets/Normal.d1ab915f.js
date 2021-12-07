@@ -1,0 +1,1 @@
+import{_ as o}from"./index.c8500415.js";import{aK as r,r as t,o as n,aL as a,aR as s,aT as c}from"./vendor.8111713d.js";const _=r({name:"",setup(){return{}}}),p=c(" \u666E\u901A\u8868\u683C ");function u(d,i,m,f,l,v){const e=t("router-view");return n(),a("div",null,[p,s(e)])}var C=o(_,[["render",u]]);export{C as default};

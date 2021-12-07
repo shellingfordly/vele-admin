@@ -1,46 +1,46 @@
-import type { AppRouteRecordRaw } from '/@/router/types/types';
-import { LAYOUT } from '../baseRoute'
+import type { AppRouteRecordRaw } from "/@/router/types/types";
+import { LAYOUT } from "../baseRoute";
 
 const demoRoutes: AppRouteRecordRaw[] = [
   {
-    path: '/demo',
-    name: 'Demo',
+    path: "/demo",
+    name: "Demo",
     component: LAYOUT,
-    redirect: '/demo/file-split',
+    redirect: "/demo/file-split",
     meta: {
-      title: 'Demo',
-      icon: 'el-icon-menu',
+      title: "Demo",
+      icon: "el-icon-menu",
       menuNum: 30,
     },
     children: [
       {
-        path: 'file-split',
-        name: 'FileSplit',
-        component: () => import('/@/views/demo/file-split/FileSplit.vue'),
+        path: "file-split",
+        name: "FileSplit",
+        component: () => import("/@/views/demo/file-split/FileSplit.vue"),
         meta: {
-          title: '文件拆分',
+          title: "文件拆分",
         },
       },
 
       {
-        path: 'usedate',
-        name: 'UseData',
-        component: () => import('/@/views/demo/use-data/useData.vue'),
+        path: "usedate",
+        name: "UseData",
+        component: () => import("/src/views/demo/use-data/useData.vue"),
         meta: {
-          title: 'useData',
+          title: "useData",
         },
       },
 
       {
-        path: 'setup',
-        name: 'Setup',
-        component: () => import('/@/views/demo/setup/index.vue'),
+        path: "setup",
+        name: "Setup",
+        component: () => import("/@/views/demo/setup/index.vue"),
         meta: {
-          title: 'Setup',
+          title: "Setup",
         },
       },
-    ]
+    ],
   },
-]
+];
 
-export default demoRoutes
+export default demoRoutes;
