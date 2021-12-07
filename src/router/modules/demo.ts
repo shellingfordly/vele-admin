@@ -25,7 +25,7 @@ const demoRoutes: AppRouteRecordRaw[] = [
       {
         path: "usedate",
         name: "UseData",
-        component: () => import("/src/views/demo/use-data/useData.vue"),
+        component: () => import("/src/views/demo/use-data/UseData.vue"),
         meta: {
           title: "useData",
         },
