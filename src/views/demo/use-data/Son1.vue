@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import useData, { parentData } from "./hooks/useData";
+import useData, { parentData } from "./hooks/useDataHook";
 
 export default defineComponent({
   name: "",
