@@ -1,7 +1,8 @@
 <template>
   <div class="menu-container">
-    <div class="app-title" :style="getTitleStyle">
-      {{ appTitle }}
+    <div class="app-title" :style="getTitleStyle" @click="$router.push('/')">
+      <img src="/src/assets/svg/logo.svg" />
+      <span v-if="!isCollapse">{{ appTitle }}</span>
     </div>
     <div class="menu">
       <menu-bar />
@@ -9,7 +10,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent } from "vue";
 import MenuBar from "./components/MenuBar.vue";
 import { useGlobSetting } from "/@/hooks/setting/globSetting";
 import appStore from "/@/store/modules/app";
@@ -18,13 +19,14 @@ export default defineComponent({
   name: "Menu",
   components: { MenuBar },
   setup() {
+    const isCollapse = computed(() => appStore.getIsCollapse);
     const getTitleStyle = computed(() => ({
-      width: appStore.getIsCollapse ? "64px" : "200px",
+      width: isCollapse.value ? "64px" : "200px",
     }));
-    const { shortName } = useGlobSetting();
-    const appTitle = ref(shortName);
+    const { shortName, title } = useGlobSetting();
+    const appTitle = computed(() => title);
 
-    return { appTitle, getTitleStyle };
+    return { appTitle, getTitleStyle, isCollapse };
   },
 });
 </script>
@@ -44,6 +46,12 @@ export default defineComponent({
     line-height: 56px;
     text-align: center;
     transition: all 0.1s linear;
+
+    img {
+      width: 30px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
   }
 
   .menu {
