@@ -8,25 +8,27 @@
       </div>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item icon="el-icon-user">个人中心</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-switch-button" @click="logout">登出</el-dropdown-item>
+          <!-- <el-dropdown-item icon="el-icon-user">个人中心</el-dropdown-item> -->
+          <el-dropdown-item icon="el-icon-switch-button" @click="logout">
+            登出
+          </el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
   </div>
 </template>
 <script lang="ts">
+import { log } from "console";
 import { computed, defineComponent } from "vue";
+import { USER_INFO_KEY } from "/@/enums/cacheEnum";
 import { userStore } from "/@/store/modules/user";
 
 export default defineComponent({
   setup() {
     const userInfo = computed(() => userStore.getUserInfoState);
-
     function logout() {
       userStore.confirmLoginOut();
     }
-
     return { logout, userInfo };
   },
 });

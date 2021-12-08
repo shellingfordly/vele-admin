@@ -1,10 +1,14 @@
 <template>
   <el-dialog
-    :before-close="()=>{ actionDialog(false) }"
+    :before-close="
+      () => {
+        actionDialog(false);
+      }
+    "
     v-model="visible"
     v-bind="getProps"
   >
-    <template #[item]="data" v-for="item in Object.keys($slots, 'default')">
+    <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data"></slot>
     </template>
   </el-dialog>

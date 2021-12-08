@@ -16,6 +16,6 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .layout-content-container {
-  height: 100%;
+  min-height: 100%;
 }
 </style>

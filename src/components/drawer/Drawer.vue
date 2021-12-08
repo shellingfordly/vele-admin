@@ -5,7 +5,7 @@
     v-bind="getProps"
     destroy-on-close
   >
-    <template #[item]="data" v-for="item in Object.keys($slots, 'default')">
+    <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data"></slot>
     </template>
   </el-drawer>

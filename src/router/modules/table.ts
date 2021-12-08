@@ -1,55 +1,36 @@
-import type { AppRouteRecordRaw } from '/@/router/types/types';
-import { LAYOUT } from '../baseRoute'
+import type { AppRouteRecordRaw } from "/@/router/types/types";
+import { LAYOUT } from "../baseRoute";
 
 const tableRoutes: AppRouteRecordRaw[] = [
   {
-    path: '/table',
-    name: 'Table',
+    path: "/table",
+    name: "Table",
     component: LAYOUT,
-    redirect: '/table/normal',
+    redirect: "/table/normal",
     meta: {
-      title: '表格',
-      icon: 'el-icon-menu',
+      title: "表格",
+      icon: "el-icon-date",
       menuNum: 30,
     },
     children: [
       {
-        path: 'normal',
-        name: 'Normal',
-        redirect: '/table/normal/one',
-        component: () => import('/@/views/table/normal/Normal.vue'),
+        path: "normal",
+        name: "Normal",
+        component: () => import("/@/views/table/NormalTable.vue"),
         meta: {
-          title: '普通表格',
+          title: "普通表格",
         },
-        children: [
-          {
-            path: 'one',
-            name: 'One',
-            component: () => import('/@/views/table/normal/components/Normal1.vue'),
-            meta: {
-              title: '普通表格1',
-            },
-          },
-          {
-            path: 'two',
-            name: 'Two',
-            component: () => import('/@/views/table/normal/components/Normal2.vue'),
-            meta: {
-              title: '普通表格2',
-            },
-          }
-        ]
       },
       {
-        path: 'high',
-        name: 'TableHigh',
-        component: () => import('/@/views/table/high/HighTable.vue'),
+        path: "tree",
+        name: "tree",
+        component: () => import("/@/views/table/TreeTable.vue"),
         meta: {
-          title: '高级表格',
+          title: "树型表格",
         },
       },
-    ]
+    ],
   },
-]
+];
 
-export default tableRoutes
+export default tableRoutes;

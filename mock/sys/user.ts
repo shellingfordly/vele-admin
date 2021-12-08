@@ -35,7 +35,7 @@ const loginApi: MockMethod = {
 };
 
 const getUserInfoApi: MockMethod = {
-  url: "/mock-api/getUserInfo",
+  url: "/mock-api/getuserinfo",
   method: "get",
   response: (request: requestParams) => {
     const token = getRequestToken(request);

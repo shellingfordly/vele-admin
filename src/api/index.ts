@@ -3,8 +3,9 @@ import { RrrorMessageEnum } from "/@/enums/httpEnum";
 
 enum Api {
   Login = "/login",
-  Logout = "/logout",
   GetUserInfo = "/getuserinfo",
+  TableList = "/table/list",
+  TableTreeList = "/table/treelist",
 }
 
 /**
@@ -12,7 +13,7 @@ enum Api {
  */
 export function loginApi(params: any, mode = RrrorMessageEnum.MODEL) {
   // 返回token
-  return http.request<string>(
+  return http.request<RES.UserInfo>(
     {
       url: Api.Login,
       method: "POST",
@@ -25,23 +26,16 @@ export function loginApi(params: any, mode = RrrorMessageEnum.MODEL) {
 }
 
 /**
- * @description: logoutApi
- */
-export function logoutApi(params: {} = {}) {
-  return http.request<null>({
-    url: Api.Logout,
-    method: "POST",
-    params,
-  });
-}
-
-/**
  * @description: getUserInfo
  */
 export function getUserInfo(params: any) {
   return http.get<any>(Api.GetUserInfo, params);
 }
 
-export function getTest() {
-  return http.get("/test");
+export function getTableList(params?: any) {
+  return http.get<any>(Api.TableList, params);
+}
+
+export function getTableTreeList(params?: any) {
+  return http.get<any>(Api.TableTreeList, params);
 }

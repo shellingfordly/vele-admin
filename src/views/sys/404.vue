@@ -2,12 +2,10 @@
   <div class="error-container">
     <div class="error-content">
       <div class="error-img">
-        <img class="error-svg" src="/@/assets/svg/404.svg" alt="" />
+        <img class="error-svg" src="/src/assets/svg/404.svg" alt="" />
       </div>
       <div class="error-btn">
-        <el-button type="primary" @click="onClick">
-          返回首页
-        </el-button>
+        <el-button type="primary" @click="onClick"> 返回首页 </el-button>
       </div>
     </div>
   </div>
@@ -19,12 +17,11 @@ import { useRouter } from "vue-router";
 export default defineComponent({
   name: "",
   setup() {
-    const router = useRouter()
-    function onClick(){
-      router.push('/')
-      
+    const router = useRouter();
+    function onClick() {
+      router.push("/");
     }
-    return {onClick};
+    return { onClick };
   },
 });
 </script>

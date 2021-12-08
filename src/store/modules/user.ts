@@ -13,15 +13,20 @@ import store from "/@/store";
 import router from "/@/router";
 import { loginApi, getUserInfo } from "/@/api";
 import { ElMessageBox } from "element-plus";
+import { isString } from "/@/utils/help/is";
 
 const NAME = "user";
 
 function getCache(key: CacheModel) {
-  return localStorage.getItem(key);
+  const data: string = localStorage.getItem(key) || "";
+  if (data.includes("{")) {
+    return JSON.parse(data);
+  }
+  return data;
 }
 
-function setCache(key: CacheModel, token: string) {
-  localStorage.setItem(key, token);
+function setCache(key: CacheModel, data: any) {
+  localStorage.setItem(key, JSON.stringify(data));
 }
 
 @Module({ dynamic: true, namespaced: true, store, name: NAME })
@@ -34,7 +39,7 @@ export default class User extends VuexModule {
   }
 
   get getUserInfoState() {
-    return this.userInfo || getCache(USER_INFO_KEY);
+    return this.userInfo.username ? this.userInfo : getCache(USER_INFO_KEY);
   }
 
   @Mutation
@@ -46,21 +51,17 @@ export default class User extends VuexModule {
   @Mutation
   commitUserInfo(userInfo: UserInfoModel) {
     this.userInfo = userInfo;
-    setCache(USER_INFO_KEY, JSON.stringify(userInfo));
+    setCache(USER_INFO_KEY, userInfo);
   }
 
   @Action
   async loginAction(params: UserInfoModel) {
     try {
-      const token = await loginApi(params);
-      console.log("loginAction token", token);
-
+      const { token } = await loginApi(params);
       this.commitToken(token);
-
-      // const userInfo = await this.getUserInfoAction();
-
+      const userInfo = await this.getUserInfoAction();
       await router.replace(PageEnum.BASE_HOME);
-      // return userInfo;
+      return userInfo;
     } catch (error) {
       return null;
     }

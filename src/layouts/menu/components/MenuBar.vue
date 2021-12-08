@@ -29,12 +29,9 @@ export default defineComponent({
     const menus: ComputedRef<MenuModel[]> = computed(() => menuStore.getMenus);
     const route = useRoute();
     const defaultActive = route.name;
-    console.log(defaultActive)
     const goPath = useGoPath();
 
-
     function onClick(menu: MenuModel) {
-      console.log(menu)
       goPath(menu.path);
     }
 
@@ -53,7 +50,7 @@ export default defineComponent({
       handleClose,
       getMenuColor,
       defaultActive,
-      onClick
+      onClick,
     };
   },
 });
