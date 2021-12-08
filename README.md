@@ -10,7 +10,7 @@
 
 [浏览地址](https://shellingfordly.github.io/vue3-element-plus-admin)
 
-![image](https://user-images.githubusercontent.com/39196952/145184003-0223d420-d83c-494c-b1cb-423815523065.png)
+![image](https://user-images.githubusercontent.com/39196952/145194398-b63a789c-6362-4d7a-a787-b4e3e7d32333.png)
 
 ## Preparation
 
