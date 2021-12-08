@@ -4,7 +4,7 @@
 
 ## Introduction
 
-一个基于 vue3, vite2, element-plus, vuex, vue-router, typescript 的 admin 骨架
+一个基于 vue3, vite2, element-plus, vuex, vue-router, typescript 的后台管理系统
 
 ## Preview
 
@@ -46,7 +46,6 @@ yarn dev or npm run dev
 yarn build or npm run build
 ```
 
-<<<<<<< HEAD
 
 ##
 
@@ -54,6 +53,5 @@ yarn build or npm run build
 
 ## Related Warehouse
 
-- [vue-vben-admin](https://github.com/anncwb/vue-vben-admin)
-- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
-  > > > > > > > a2cf6e5a0f5d4ef3d9d3e4d3b6a11e6a080eb909
+- [vue-vben-admin](https://github.com/anncwb/vue-vben-admin) 一个基于composition-api+ts的后台模板
+- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 一个后台前端解决方案，它基于 vue 和 element-ui实现
