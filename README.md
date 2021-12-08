@@ -46,11 +46,6 @@ yarn dev or npm run dev
 yarn build or npm run build
 ```
 
-
-##
-
-=======
-
 ## Related Warehouse
 
 - [vue-vben-admin](https://github.com/anncwb/vue-vben-admin) 一个基于composition-api+ts的后台模板
