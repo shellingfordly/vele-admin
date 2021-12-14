@@ -8,7 +8,7 @@
 
 ## Preview
 
-[浏览地址](https://shellingfordly.github.io/vue3-element-plus-admin)
+[浏览地址](http://106.54.183.217:8083/#/home/index)
 
 ![image](https://user-images.githubusercontent.com/39196952/145194398-b63a789c-6362-4d7a-a787-b4e3e7d32333.png)
 
