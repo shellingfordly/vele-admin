@@ -4,13 +4,13 @@
 
 ## Introduction
 
-一个基于 vue3, vite2, element-plus, vuex, vue-router, typescript 的 admin 骨架
+一个基于 vue3, vite2, element-plus, vuex, vue-router, typescript 的后台管理系统
 
 ## Preview
 
-[浏览地址](https://shellingfordly.github.io/vue3-element-plus-admin)
+[浏览地址](http://106.54.183.217:8083/#/home/index)
 
-![image](https://user-images.githubusercontent.com/39196952/145184003-0223d420-d83c-494c-b1cb-423815523065.png)
+![image](https://user-images.githubusercontent.com/39196952/145194398-b63a789c-6362-4d7a-a787-b4e3e7d32333.png)
 
 ## Preparation
 
@@ -48,5 +48,5 @@ yarn build or npm run build
 
 ## Related Warehouse
 
-- [vue-vben-admin](https://github.com/anncwb/vue-vben-admin)
-- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
+- [vue-vben-admin](https://github.com/anncwb/vue-vben-admin) 一个基于 composition-api+ts 的后台模板
+- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 一个后台前端解决方案，它基于 vue 和 element-ui 实现
