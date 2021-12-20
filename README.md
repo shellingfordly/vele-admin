@@ -46,14 +46,7 @@ yarn dev or npm run dev
 yarn build or npm run build
 ```
 
-<<<<<<< HEAD
-
-##
-
-=======
-
 ## Related Warehouse
 
 - [vue-vben-admin](https://github.com/anncwb/vue-vben-admin)
 - [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
-  > > > > > > > a2cf6e5a0f5d4ef3d9d3e4d3b6a11e6a080eb909

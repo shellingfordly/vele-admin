@@ -24,6 +24,7 @@ import {
 
 export default defineComponent({
   name: "",
+  emits: ["register"],
   setup(props, { emit }) {
     const visible = ref(false);
     const propsRef = reactive({

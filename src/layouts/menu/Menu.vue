@@ -48,6 +48,7 @@ export default defineComponent({
     transition: all 0.1s linear;
 
     img {
+      display: inline-block;
       width: 30px;
       vertical-align: middle;
       margin-right: 10px;

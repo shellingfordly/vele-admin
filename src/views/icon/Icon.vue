@@ -1,9 +1,5 @@
 <script lang="ts" setup>
 import { elementIcons } from "./const";
-
-function generateElementIconCode(symbol: string) {
-  return `<i class="el-icon-${symbol}" />`;
-}
 </script>
 
 <template>

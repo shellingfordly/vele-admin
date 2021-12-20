@@ -1,37 +1,23 @@
-<template>
-  <div class="breadcrumb">
-    <el-icon :class="iconClass" @click="changCollapse" />
-  </div>
-</template>
-<script lang="ts">
-import { computed, defineComponent } from "vue";
-import appStore from "/@/store/modules/app";
+<script lang="ts" setup>
+import { computed } from "vue";
+import { useRouter } from "vue-router";
 
-export default defineComponent({
-  name: "Breadcrumb",
-  setup() {
-    const isCollapse = computed(() => appStore.getIsCollapse);
-    const iconClass = computed(() =>
-      isCollapse.value ? "el-icon-s-unfold" : "el-icon-s-fold"
-    );
+const { currentRoute } = useRouter();
+console.log();
 
-    function changCollapse() {
-      appStore.setIsCollapse(!isCollapse.value);
-    }
-
-    return {
-      iconClass,
-      changCollapse,
-    };
-  },
+const routes = computed(() => {
+  if (currentRoute.value.path.includes("index")) return [currentRoute.value];
+  else return currentRoute.value.matched;
 });
+console.log(routes.value);
 </script>
 
-<style lang="less" scoped>
-.breadcrumb {
-  .el-icon-s-fold,
-  .el-icon-s-unfold {
-    cursor: pointer;
-  }
-}
-</style>
+<template>
+  <el-breadcrumb separator="/" route>
+    <el-breadcrumb-item v-for="route in routes" :to="{ path: route.path }">
+      {{ route.meta.title }}
+    </el-breadcrumb-item>
+  </el-breadcrumb>
+</template>
+
+<style scoped lang="less"></style>

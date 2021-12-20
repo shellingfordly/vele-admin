@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { reactive } from "vue";
-import SvgIconVue from "/@/components/svgIcon/SvgIcon.vue";
 
 const form = reactive({
   name: "",

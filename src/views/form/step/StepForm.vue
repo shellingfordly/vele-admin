@@ -28,16 +28,18 @@ function onSuccess(data: any) {
 </script>
 
 <template>
-  <div class="form-container">
+  <div class="flex h-120 w-screen">
     <el-steps direction="vertical" :active="active">
       <el-step v-for="title in stepList" :title="title" :key="title"></el-step>
     </el-steps>
-    <div class="content">
-      <div class="title">{{ stepList[active - 1] }}</div>
+    <div class="px-100">
+      <div class="text-center text-4xl leading-loose">
+        {{ stepList[active - 1] }}
+      </div>
       <StepOne v-if="active === 1" v-model="active" @success="onSuccess" />
-      <div v-else-if="active === 2" class="info">
-        <div class="info-item" v-for="(value, key) in data" :key="key">
-          <span>{{ value }}:</span>
+      <div v-else-if="active === 2" class="w-50 mt-10 m-auto">
+        <div class="mb-5" v-for="(value, key) in data" :key="key">
+          <span class="mr-4">{{ value }} :</span>
           <span>{{ formData[key] }}</span>
         </div>
         <div>
@@ -67,24 +69,6 @@ function onSuccess(data: any) {
   .content {
     padding: 0 100px;
     flex: 1;
-
-    .title {
-      text-align: center;
-      line-height: 80px;
-      font-size: 25px;
-    }
-    .info {
-      width: 200px;
-      margin: 50px auto;
-
-      .info-item {
-        margin: 0 auto 20px;
-
-        span:nth-child(1) {
-          margin-right: 15px;
-        }
-      }
-    }
   }
 }
 </style>

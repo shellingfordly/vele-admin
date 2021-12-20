@@ -50,8 +50,7 @@ function resetForm() {
     ref="ruleFormRef"
     :model="formData"
     :rules="rules"
-    label-width="150px"
-    class="demo-ruleForm"
+    label-width="60px"
   >
     <el-form-item label="姓名" prop="name">
       <el-input v-model="formData.name"></el-input>
@@ -67,7 +66,6 @@ function resetForm() {
         v-model="formData.date"
         type="date"
         placeholder="Pick a date"
-        style="width: 100%"
       ></el-date-picker>
     </el-form-item>
     <el-form-item label="身份" prop="type">
@@ -87,5 +85,3 @@ function resetForm() {
     </el-form-item>
   </el-form>
 </template>
-
-<style scoped lang="less"></style>

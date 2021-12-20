@@ -1,3 +1,6 @@
+import "virtual:windi-base.css";
+import "virtual:windi-components.css";
+import "virtual:windi-utilities.css";
 import { createApp } from "vue";
 import { setRouter } from "./router";
 import { setupStore } from "./store";
