@@ -1,36 +1,26 @@
 <template>
   <div class="Trigger">
-    <el-icon :class="iconClass" @click="changCollapse" />
+    <el-icon class="icon" @click="changCollapse">
+      <Expand v-if="isCollapse" />
+      <Fold v-else />
+    </el-icon>
   </div>
 </template>
-<script lang="ts">
-import { computed, defineComponent } from "vue";
+<script setup lang="ts">
+import { computed } from "vue";
 import appStore from "/@/store/modules/app";
+import { Expand, Fold } from "@element-plus/icons-vue";
 
-export default defineComponent({
-  name: "Trigger",
-  setup() {
-    const isCollapse = computed(() => appStore.getIsCollapse);
-    const iconClass = computed(() =>
-      isCollapse.value ? "el-icon-s-unfold" : "el-icon-s-fold"
-    );
+const isCollapse = computed(() => appStore.getIsCollapse);
 
-    function changCollapse() {
-      appStore.setIsCollapse(!isCollapse.value);
-    }
-
-    return {
-      iconClass,
-      changCollapse,
-    };
-  },
-});
+function changCollapse() {
+  appStore.setIsCollapse(!isCollapse.value);
+}
 </script>
 
 <style lang="less" scoped>
 .Trigger {
-  .el-icon-s-fold,
-  .el-icon-s-unfold {
+  .icon {
     cursor: pointer;
   }
 }

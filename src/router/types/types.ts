@@ -1,10 +1,9 @@
-
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export type Component<T extends any = any> =
-| ReturnType<typeof defineComponent>
-| (() => Promise<typeof import('*.vue')>)
-| (() => Promise<T>);
+  | ReturnType<typeof defineComponent>
+  | (() => Promise<typeof import("*.vue")>)
+  | (() => Promise<T>);
 
 export interface RouteMeta {
   // title
@@ -18,7 +17,7 @@ export interface RouteMeta {
   // Is it fixed on tab
   affix?: boolean;
   // icon on tab
-  icon?: string;
+  icon?: any;
   activeIcon?: string;
 
   frameSrc?: string;
@@ -48,7 +47,7 @@ export interface RouteMeta {
 }
 
 // @ts-ignore
-export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
+export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, "meta"> {
   name: string;
   meta: RouteMeta;
   component?: Component | string;

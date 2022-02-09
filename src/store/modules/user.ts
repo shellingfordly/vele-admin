@@ -13,7 +13,6 @@ import store from "/@/store";
 import router from "/@/router";
 import { loginApi, getUserInfo } from "/@/api";
 import { ElMessageBox } from "element-plus";
-import { isString } from "/@/utils/help/is";
 
 const NAME = "user";
 
@@ -86,9 +85,12 @@ export default class User extends VuexModule {
     ElMessageBox.confirm("温馨提示", "是否确认退出系统？", {
       confirmButtonText: "确定",
       cancelButtonText: "取消",
-    }).then(() => {
-      this.logout(true);
-    });
+      type: "info",
+    })
+      .then(() => {
+        this.logout(true);
+      })
+      .catch(() => {});
   }
 }
 

@@ -3,13 +3,11 @@ import { computed } from "vue";
 import { useRouter } from "vue-router";
 
 const { currentRoute } = useRouter();
-console.log();
 
 const routes = computed(() => {
   if (currentRoute.value.path.includes("index")) return [currentRoute.value];
   else return currentRoute.value.matched;
 });
-console.log(routes.value);
 </script>
 
 <template>

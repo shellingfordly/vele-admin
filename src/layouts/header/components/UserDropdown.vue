@@ -1,15 +1,14 @@
 <template>
   <div class="user-dropdown">
-    <el-dropdown>
+    <el-dropdown style="height: 100%">
       <div class="el-dropdown-link">
-        <el-icon class="el-icon-user-solid" />
+        <el-icon><user-filled /></el-icon>
         <span class="user-name">{{ userInfo.username }}</span>
-        <i class="el-icon-arrow-down el-icon--right"></i>
       </div>
       <template #dropdown>
         <el-dropdown-menu>
           <!-- <el-dropdown-item icon="el-icon-user">个人中心</el-dropdown-item> -->
-          <el-dropdown-item icon="el-icon-switch-button" @click="logout">
+          <el-dropdown-item :icon="SwitchButton" @click="logout">
             登出
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -17,21 +16,15 @@
     </el-dropdown>
   </div>
 </template>
-<script lang="ts">
-import { log } from "console";
-import { computed, defineComponent } from "vue";
-import { USER_INFO_KEY } from "/@/enums/cacheEnum";
+<script setup lang="ts">
+import { computed } from "vue";
 import { userStore } from "/@/store/modules/user";
+import { UserFilled, SwitchButton } from "@element-plus/icons-vue";
 
-export default defineComponent({
-  setup() {
-    const userInfo = computed(() => userStore.getUserInfoState);
-    function logout() {
-      userStore.confirmLoginOut();
-    }
-    return { logout, userInfo };
-  },
-});
+const userInfo = computed(() => userStore.getUserInfoState);
+function logout() {
+  userStore.confirmLoginOut();
+}
 </script>
 
 <style lang="less" scoped>
@@ -39,16 +32,18 @@ export default defineComponent({
 
 .user-dropdown {
   .el-dropdown-link {
+    padding: 0 10px;
     height: 100%;
     cursor: pointer;
     color: @base-font-color;
+    line-height: 48px;
 
-    .el-icon-user-solid {
-      margin-right: 5px;
+    &:hover {
+      background-color: @border-color;
     }
-
     .user-name {
-      margin-right: 5px;
+      margin-left: 5px;
+      font-size: 16px;
     }
   }
 }

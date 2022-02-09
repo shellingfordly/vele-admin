@@ -1,7 +1,7 @@
 <template>
   <el-scrollbar wrap-class="scrollbar-wrapper">
     <el-menu
-      :defaultActive="defaultActive"
+      :default-active="defaultActive"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
@@ -28,7 +28,7 @@ export default defineComponent({
     const isCollapse = computed(() => appStore.getIsCollapse);
     const menus: ComputedRef<MenuModel[]> = computed(() => menuStore.getMenus);
     const route = useRoute();
-    const defaultActive = route.name;
+    const defaultActive = route.name as string;
     const goPath = useGoPath();
 
     function onClick(menu: MenuModel) {

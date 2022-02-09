@@ -21,13 +21,20 @@ const homeRoutes: AppRouteRecordRaw[] = [
           title: "基础表单",
         },
       },
-
       {
         path: "step",
         name: "StepForm",
         component: () => import("/@/views/form/step/StepForm.vue"),
         meta: {
           title: "分布表单",
+        },
+      },
+      {
+        path: "diy",
+        name: "DiyForm",
+        component: () => import("/@/views/form/diy/Diy.vue"),
+        meta: {
+          title: "自定义",
         },
       },
     ],
