@@ -2,11 +2,10 @@
   "name": "wone-dev",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "dev:pro": "cross-env NODE_ENV=production vite",
+    "dev": "cross-env NODE_ENV=production vite",
     "serve": "rm -rf ./node_modules/.vite && vite",
     "build:pro": "cross-env NODE_ENV=production vite build",
-    "build:github": "vite build"
+    "build": "vite build"
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
