@@ -8,10 +8,11 @@ import App from "./App.vue";
 import "./style/index.less";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
+import setup from "./setup";
 
 const app = createApp(App);
 
-app.config.globalProperties.foo = "bar";
+setup(app);
 
 setRouter(app);
 setupStore(app);

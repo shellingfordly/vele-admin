@@ -16,42 +16,29 @@
     </el-container>
   </el-container>
 </template>
-<script lang="ts">
-import { defineComponent, onMounted, reactive } from "vue";
+<script setup lang="ts">
+import { onMounted, reactive } from "vue";
 import LayoutContent from "./content/Content.vue";
 import LayoutFooter from "./footer/Footer.vue";
 import LayoutHeader from "./header/Header.vue";
 import LayoutMenu from "./menu/Menu.vue";
 import AppModule from "../store/modules/app";
 
-export default defineComponent({
-  name: "Layout",
-  components: {
-    LayoutContent,
-    LayoutFooter,
-    LayoutHeader,
-    LayoutMenu,
-  },
-  setup() {
-    const isShow = reactive({
-      header: true,
-      footer: false
-    })
+const isShow = reactive({
+  header: true,
+  footer: false,
+});
 
-    onMounted(() => {
-      const saveWindowSize = () => {
-        const height =
-          window.innerHeight ||
-          document.documentElement.clientWidth ||
-          document.body.clientHeight;
-        AppModule.setWindowsHeight(height);
-      };
-      saveWindowSize();
-      window.addEventListener("resize", saveWindowSize);
-    });
-
-    return {isShow};
-  },
+onMounted(() => {
+  const saveWindowSize = () => {
+    const height =
+      window.innerHeight ||
+      document.documentElement.clientWidth ||
+      document.body.clientHeight;
+    AppModule.setWindowsHeight(height);
+  };
+  saveWindowSize();
+  window.addEventListener("resize", saveWindowSize);
 });
 </script>
 

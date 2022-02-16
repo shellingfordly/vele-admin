@@ -2,7 +2,7 @@
   <div class="user-dropdown">
     <el-dropdown style="height: 100%">
       <div class="el-dropdown-link">
-        <el-icon><user-filled /></el-icon>
+        <el-icon><UserFilled /></el-icon>
         <span class="user-name">{{ userInfo.username }}</span>
       </div>
       <template #dropdown>
@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { userStore } from "/@/store/modules/user";
-import { UserFilled, SwitchButton } from "@element-plus/icons-vue";
+import { UserFilled, SwitchButton } from "@element-plus/icons";
 
 const userInfo = computed(() => userStore.getUserInfoState);
 function logout() {

@@ -111,12 +111,7 @@
   </el-row>
 </template>
 <script lang="ts" setup>
-import {
-  DataAnalysis,
-  Sell,
-  ShoppingCart,
-  Trophy,
-} from "@element-plus/icons-vue";
+import { DataAnalysis, Sell, ShoppingCart, Trophy } from "@element-plus/icons";
 import { onMounted, ref } from "vue";
 import * as echarts from "echarts";
 import {

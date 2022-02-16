@@ -47,10 +47,15 @@
   resolved "https://registry.npmmirror.com/@ctrl/tinycolor/-/tinycolor-3.4.0.tgz#c3c5ae543c897caa9c2a68630bed355be5f9990f"
   integrity sha512-JZButFdZ1+/xAfpguQHoabIXkcqRRKpMrWKBkpEZZyxfY9C1DpADFB8PEqGSTeFr135SaTRfKqGKx5xSCLI7ZQ==
 
-"@element-plus/icons-vue@^0.2.6", "@element-plus/icons-vue@^0.2.7":
+"@element-plus/icons-vue@^0.2.6":
   version "0.2.7"
   resolved "https://registry.npmmirror.com/@element-plus/icons-vue/-/icons-vue-0.2.7.tgz#c0b75363098bf1fba414e18706604bfe5057ae1b"
   integrity sha512-S8kDbfVaWkQvbUYQE1ui448tzaHfUvyESCep9J6uPRlViyQPXjdIfwLBhV6AmQSOfFS8rL+xehJGhvzPXLrSBg==
+
+"@element-plus/icons@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.npmmirror.com/@element-plus/icons/-/icons-0.0.11.tgz#9b187c002774548b911850d17fa5fc2f9a515f57"
+  integrity sha512-iKQXSxXu131Ai+I9Ymtcof9WId7kaXvB1+WRfAfpQCW7UiAMYgdNDqb/u0hgTo2Yq3MwC4MWJnNuTBEpG8r7+A==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

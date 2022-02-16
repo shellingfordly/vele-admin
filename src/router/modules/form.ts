@@ -9,7 +9,7 @@ const homeRoutes: AppRouteRecordRaw[] = [
     redirect: "/form/step",
     meta: {
       title: "表单",
-      icon: "el-icon-document",
+      icon: "Tickets",
       menuNum: 50,
     },
     children: [

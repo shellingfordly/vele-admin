@@ -5,7 +5,9 @@ import { elementIcons } from "./const";
 <template>
   <div class="icons-container">
     <div class="icon-item" v-for="item of elementIcons" :key="item">
-      <i :class="'el-icon-' + item" />
+      <el-icon>
+        <component :is="item" />
+      </el-icon>
       <span>{{ item }}</span>
     </div>
   </div>
@@ -23,6 +25,7 @@ import { elementIcons } from "./const";
   .icon-item {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     width: 150px;
     height: 70px;

@@ -9,7 +9,7 @@ const tableRoutes: AppRouteRecordRaw[] = [
     redirect: "/table/normal",
     meta: {
       title: "表格",
-      icon: "el-icon-date",
+      icon: "SetUp",
       menuNum: 30,
     },
     children: [

@@ -12,48 +12,28 @@
     </el-menu>
   </el-scrollbar>
 </template>
-<script lang="ts">
-import { computed, ComputedRef, defineComponent } from "vue";
+
+<script setup lang="ts">
+import { computed, ComputedRef } from "vue";
 import appStore from "/@/store/modules/app";
 import { menuStore } from "../../../store/modules/menu";
 import { MenuModel } from "/@/types/router/menu";
 import MenuItem from "./MenuItem.vue";
 import { getMenuColor } from "/@/theme/menu";
 import { useRoute } from "vue-router";
-import { useGoPath } from "/@/utils/router/useRouter";
 
-export default defineComponent({
-  components: { MenuItem },
-  setup() {
-    const isCollapse = computed(() => appStore.getIsCollapse);
-    const menus: ComputedRef<MenuModel[]> = computed(() => menuStore.getMenus);
-    const route = useRoute();
-    const defaultActive = route.name as string;
-    const goPath = useGoPath();
+const isCollapse = computed(() => appStore.getIsCollapse);
+const menus: ComputedRef<MenuModel[]> = computed(() => menuStore.getMenus);
+const route = useRoute();
+const defaultActive = route.name as string;
 
-    function onClick(menu: MenuModel) {
-      goPath(menu.path);
-    }
+function handleOpen(key: any, keyPath: any) {
+  console.log(key, keyPath);
+}
 
-    function handleOpen(key: any, keyPath: any) {
-      console.log(key, keyPath);
-    }
-
-    function handleClose(key: any, keyPath: any) {
-      console.log(key, keyPath);
-    }
-
-    return {
-      menus,
-      isCollapse,
-      handleOpen,
-      handleClose,
-      getMenuColor,
-      defaultActive,
-      onClick,
-    };
-  },
-});
+function handleClose(key: any, keyPath: any) {
+  console.log(key, keyPath);
+}
 </script>
 
 <style lang="less" scoped>

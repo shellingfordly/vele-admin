@@ -9,7 +9,7 @@ const homeRoutes: AppRouteRecordRaw[] = [
     redirect: "/icon/index",
     meta: {
       title: "图标",
-      icon: "el-icon-discount",
+      icon: "Eleme",
       menuNum: 10,
     },
     children: [

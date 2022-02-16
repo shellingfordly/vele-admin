@@ -9,7 +9,7 @@ const homeRoutes: AppRouteRecordRaw[] = [
     redirect: "/home/index",
     meta: {
       title: "分析页",
-      icon: "el-icon-menu",
+      icon: "House",
       menuNum: 10,
     },
     children: [

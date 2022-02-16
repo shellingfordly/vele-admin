@@ -9,26 +9,18 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-import { computed, defineComponent } from "vue";
+<script setup lang="ts">
+import { computed } from "vue";
 import MenuBar from "./components/MenuBar.vue";
 import { useGlobSetting } from "/@/hooks/setting/globSetting";
 import appStore from "/@/store/modules/app";
 
-export default defineComponent({
-  name: "Menu",
-  components: { MenuBar },
-  setup() {
-    const isCollapse = computed(() => appStore.getIsCollapse);
-    const getTitleStyle = computed(() => ({
-      width: isCollapse.value ? "64px" : "200px",
-    }));
-    const { shortName, title } = useGlobSetting();
-    const appTitle = computed(() => title);
-
-    return { appTitle, getTitleStyle, isCollapse };
-  },
-});
+const isCollapse = computed(() => appStore.getIsCollapse);
+const getTitleStyle = computed(() => ({
+  width: isCollapse.value ? "64px" : "200px",
+}));
+const { title } = useGlobSetting();
+const appTitle = computed(() => title);
 </script>
 
 <style lang="less" scoped>

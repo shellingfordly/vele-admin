@@ -12,7 +12,7 @@ const list: {
     content: [
       {
         val: "Github",
-        text: "vue3-element-plus-admin",
+        text: "vele-admin",
         url: "https://github.com/shellingfordly/vue3-admin",
       },
       {

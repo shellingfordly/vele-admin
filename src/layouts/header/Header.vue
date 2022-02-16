@@ -11,23 +11,11 @@
     </el-row>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from "vue";
+
+<script setup lang="ts">
 import Trigger from "./components/Trigger.vue";
 import UserDropdown from "./components/UserDropdown.vue";
 import Breadcrumb from "./components/Breadcrumb.vue";
-
-export default defineComponent({
-  name: "LayoutHeader",
-  components: {
-    Trigger,
-    Breadcrumb,
-    UserDropdown,
-  },
-  setup() {
-    return {};
-  },
-});
 </script>
 
 <style lang="less" scoped>

@@ -9,7 +9,7 @@ const homeRoutes: AppRouteRecordRaw[] = [
     redirect: "/comps/dialog",
     meta: {
       title: "组件",
-      icon: "el-icon-user",
+      icon: "Grid",
       menuNum: 70,
     },
     children: [
