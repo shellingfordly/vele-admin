@@ -13,11 +13,11 @@ const list: {
       {
         val: "Github",
         text: "vele-admin",
-        url: "https://github.com/shellingfordly/vue3-admin",
+        url: "https://github.com/shellingfordly/vele-admin",
       },
       {
         val: "预览地址",
-        url: "https://shellingfordly.github.io/vue3-admin",
+        url: "https://shellingfordly.github.io/vele-admin",
       },
     ],
   },

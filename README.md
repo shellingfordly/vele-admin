@@ -1,6 +1,6 @@
 ![logo](https://user-images.githubusercontent.com/39196952/145187616-ab489c68-39d5-4d3e-bfbb-c8c8bc78737b.jpg)
 
-# vue3-element-plus-admin
+# vele-admin
 
 ## Introduction
 
@@ -25,7 +25,7 @@
 ## Download
 
 ```
-git clone https://github.com/shellingfordly/vue3-admin.git
+git clone https://github.com/shellingfordly/vele-admin.git
 ```
 
 ## Install
