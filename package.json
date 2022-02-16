@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "dev:pro": "cross-env NODE_ENV=production vite",
     "serve": "rm -rf ./node_modules/.vite && vite",
-    "build": "vite build"
+    "build:pro": "cross-env NODE_ENV=production vite build",
+    "build:github": "vite build"
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
@@ -25,6 +27,7 @@
     "@vitejs/plugin-vue": "^1.9.3",
     "@vue/compiler-sfc": "^3.2.20",
     "babel-plugin-import": "^1.13.3",
+    "cross-env": "^7.0.3",
     "less": "^4.1.1",
     "less-loader": "^8.0.0",
     "md5": "^2.3.0",

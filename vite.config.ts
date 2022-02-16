@@ -3,6 +3,7 @@ import { loadEnv } from "vite";
 import { resolve } from "path";
 import { createVitePlugins } from "./build/vite/plugins";
 import { wrapperEnv } from "./build/vite/env";
+import { isDevMode } from "./src/utils/env/env";
 
 export default ({ mode, command }: ConfigEnv): UserConfig => {
   const root = process.cwd();
@@ -11,7 +12,7 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
   const isBuild = command === "build";
 
   return {
-    base: process.env.VITE_PUBLIC_PATH,
+    base: isDevMode() ? process.env.VITE_PUBLIC_PATH : "/",
     resolve: {
       alias: [
         {

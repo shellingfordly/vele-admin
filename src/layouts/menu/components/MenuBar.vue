@@ -52,7 +52,7 @@ function handleClose(key: any, keyPath: any) {
   border: 0;
 }
 
-/deep/ .el-scrollbar__view {
+:deep(.el-scrollbar__view) {
   height: 100% !important;
 }
 </style>
