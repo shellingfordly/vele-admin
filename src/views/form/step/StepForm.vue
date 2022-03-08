@@ -50,7 +50,7 @@ function onSuccess(data: any) {
       <div v-else>
         <el-result icon="success" title="创建成功">
           <template #extra>
-            <el-button type="primary" size="medium" @click="active = 1">
+            <el-button type="primary" size="large" @click="active = 1">
               再次创建
             </el-button>
           </template>
