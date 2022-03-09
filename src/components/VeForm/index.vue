@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref, unref, useAttrs } from "vue";
+import { computed, onMounted, ref, unref, useAttrs, watch } from "vue";
 import { FormActionType, FormProps } from "./types";
 import type { ElForm } from "element-plus";
 import VeFormItem from "./components/VeFormItem.vue";
@@ -15,7 +15,7 @@ const formRef = ref<FormInstance>();
 const getBindValue = computed<Recordable>(() => ({
   ...attrs,
   ...props,
-  ...unref(propsRef),
+  ...propsRef.value,
 }));
 
 const getSchema = computed(() => {
@@ -28,24 +28,15 @@ function setProps(formProps: Partial<FormProps>) {
 }
 
 function validate(callback: (valid: any) => void) {
-  const form = unref(formRef);
-  if (form) {
-    form.validate(callback);
-  }
+  formRef.value && formRef.value.validate(callback);
 }
 
 function resetFields() {
-  const form = unref(formRef);
-  if (form) {
-    form.resetFields();
-  }
+  formRef.value && formRef.value.resetFields();
 }
 
 function clearValidate() {
-  const form = unref(formRef);
-  if (form) {
-    form.clearValidate();
-  }
+  formRef.value && formRef.value.clearValidate();
 }
 
 const formActionType: Partial<FormActionType> = {
@@ -61,7 +52,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-form ref="formRef" label-width="120px" v-bind="getBindValue">
+  <el-form ref="formRef" v-bind="getBindValue">
     <slot name="formHeader"></slot>
     <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data"></slot>

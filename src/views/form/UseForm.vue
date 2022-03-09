@@ -35,17 +35,39 @@ const schemas: FormSchema[] = [
   {
     field: "sex",
     label: "性别",
-    component: "Radio",
+    component: "RadioGroup",
     componentProps: {
-      label: "xxx",
+      options: [
+        {
+          label: "男",
+          value: 1,
+        },
+        {
+          label: "女",
+          value: 2,
+        },
+      ],
     },
   },
   {
     field: "like",
     label: "爱好",
-    component: "Checkbox",
+    component: "CheckboxGroup",
     componentProps: {
-      label: "xxx",
+      options: [
+        {
+          label: "足球",
+          value: 1,
+        },
+        {
+          label: "篮球",
+          value: 2,
+        },
+        {
+          label: "游泳",
+          value: 3,
+        },
+      ],
     },
   },
   {
@@ -56,12 +78,12 @@ const schemas: FormSchema[] = [
 ];
 
 const formData = reactive({
-  name: "Tome",
-  age: 18,
-  city: 1,
-  sex: "男",
-  like: [1],
-  date: "2022/03/08",
+  name: "",
+  age: undefined,
+  city: null,
+  sex: null,
+  like: [],
+  date: "",
 });
 
 watch(formData, () => {
@@ -72,7 +94,7 @@ const rules = reactive({
   name: [
     {
       required: true,
-      message: "Please input Activity name",
+      message: "Please input name",
       trigger: "blur",
     },
     {
@@ -82,14 +104,14 @@ const rules = reactive({
       trigger: "blur",
     },
   ],
-  region: [
+  age: [
     {
       required: true,
-      message: "Please select Activity zone",
-      trigger: "change",
+      message: "Please input age",
+      trigger: "blur",
     },
   ],
-  date1: [
+  date: [
     {
       type: "date",
       required: true,
@@ -97,33 +119,27 @@ const rules = reactive({
       trigger: "change",
     },
   ],
-  date2: [
-    {
-      type: "date",
-      required: true,
-      message: "Please pick a time",
-      trigger: "change",
-    },
-  ],
-  type: [
+  like: [
     {
       type: "array",
       required: true,
-      message: "Please select at least one activity type",
-      trigger: "change",
+      message: "Please select like",
+      trigger: "blur",
     },
   ],
-  resource: [
+  sex: [
     {
+      type: "number",
       required: true,
-      message: "Please select activity resource",
-      trigger: "change",
+      message: "Please select sex",
+      trigger: "blur",
     },
   ],
-  desc: [
+  city: [
     {
+      type: "number",
       required: true,
-      message: "Please input activity form",
+      message: "Please input city",
       trigger: "blur",
     },
   ],
@@ -138,9 +154,9 @@ const { register, methods } = useForm({
 const submitForm = () => {
   methods.validate((valid: any) => {
     if (valid) {
-      console.log("submit!");
+      console.log("submit!", valid);
     } else {
-      console.log("error submit!");
+      console.log("error submit!", valid);
       return false;
     }
   });
@@ -149,14 +165,13 @@ const submitForm = () => {
 const resetForm = () => {
   methods.resetFields();
 };
-const onClick = () => {
-  console.log(formData);
-};
+
 </script>
 
 <template>
   <VeForm :formData="formData" @register="register"> </VeForm>
-  <ElButton @click="onClick">onClick</ElButton>
+  <ElButton @click="submitForm">submitForm</ElButton>
+  <ElButton @click="resetForm">resetForm</ElButton>
 </template>
 
 <style scoped lang="less"></style>

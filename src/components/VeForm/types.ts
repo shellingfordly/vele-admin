@@ -4,9 +4,7 @@ export type ComponentType =
   | "Input"
   | "InputNumber"
   | "Select"
-  | "Radio"
   | "RadioGroup"
-  | "Checkbox"
   | "CheckboxGroup"
   | "Cascader"
   | "DatePicker"
@@ -47,7 +45,7 @@ export interface FormProps {
   // 是否显示必填字段的标签旁边的红色星号
   hideRequiredAsterisk: boolean;
   // 是否显示校验错误信息
-  showMessahe: boolean;
+  showMessage: boolean;
   // 是否以行内形式展示校验信息
   inlineMessage: boolean;
   // 是否在输入框中显示校验结果反馈图标

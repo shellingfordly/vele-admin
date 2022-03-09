@@ -11,8 +11,6 @@ const props = defineProps({
   },
 });
 
-console.log("select", props);
-
 const getBindValue = computed(() => ({
   ...props,
   ...attrs,

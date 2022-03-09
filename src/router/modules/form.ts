@@ -16,7 +16,7 @@ const homeRoutes: AppRouteRecordRaw[] = [
       {
         path: "base",
         name: "BaseForm",
-        component: () => import("/@/views/form/base/BaseForm.vue"),
+        component: () => import("/@/views/form/BaseForm.vue"),
         meta: {
           title: "基础表单",
         },
@@ -30,11 +30,11 @@ const homeRoutes: AppRouteRecordRaw[] = [
         },
       },
       {
-        path: "diy",
-        name: "DiyForm",
-        component: () => import("/@/views/form/diy/Diy.vue"),
+        path: "use-form",
+        name: "UseForm",
+        component: () => import("/@/views/form/UseForm.vue"),
         meta: {
-          title: "自定义",
+          title: "UseForm",
         },
       },
     ],

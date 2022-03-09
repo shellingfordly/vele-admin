@@ -26,4 +26,4 @@ export interface MethodsModel {
   setProps: (props: any) => void;
 }
 
-export type ResultModel = [(...args: any) => viod, MethodsModel];
+export type ResultModel = [(...args: any) => void, MethodsModel];

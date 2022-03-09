@@ -1,10 +1,6 @@
 import {
   ElInput,
   ElInputNumber,
-  ElRadio,
-  ElRadioGroup,
-  ElCheckbox,
-  ElCheckboxGroup,
   ElCascader,
   ElDatePicker,
   ElTimePicker,
@@ -18,16 +14,16 @@ import {
 import { ComponentType } from "./types";
 import type { Component } from "vue";
 import VeSelect from "/@/components/VeSelect/index.vue";
+import VeCheckboxGroup from '/@/components/VeCheckbox/VeCheckboxGroup.vue'
+import VeRadioGroup from '/@/components/VeRadio/VeRadioGroup.vue'
 
 const componentMap = new Map<ComponentType, Component>();
 
 componentMap.set("Input", ElInput);
 componentMap.set("InputNumber", ElInputNumber);
 componentMap.set("Select", VeSelect);
-componentMap.set("Radio", ElRadio);
-componentMap.set("RadioGroup", ElRadioGroup);
-componentMap.set("Checkbox", ElCheckbox);
-componentMap.set("CheckboxGroup", ElCheckboxGroup);
+componentMap.set("RadioGroup", VeRadioGroup);
+componentMap.set("CheckboxGroup", VeCheckboxGroup);
 componentMap.set("Cascader", ElCascader);
 componentMap.set("DatePicker", ElDatePicker);
 componentMap.set("TimePicker", ElTimePicker);

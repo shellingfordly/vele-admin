@@ -1,4 +1,4 @@
-<script lang="tsx" setup>
+<script lang="ts" setup>
 import { computed, defineComponent, PropType } from "vue";
 import { componentMap } from "../componentMap";
 import { FormSchema } from "../types";
@@ -14,7 +14,7 @@ const props = defineProps({
   value: Object as PropType<Recordable>,
 });
 
-const { component, field, label } = props.schema;
+const { component, label } = props.schema;
 
 const labelIsVNode = computed(() => !isString(label));
 
@@ -38,11 +38,7 @@ function renderComponent() {
   if (props.schema.render) {
     return props.schema.render;
   }
-  const Comp = componentMap.get(component) as ReturnType<
-    typeof defineComponent
-  >;
-
-  return <Comp {...props.schema.componentProps} />;
+  return componentMap.get(component);
 }
 </script>
 
@@ -51,6 +47,10 @@ function renderComponent() {
     <template v-if="labelIsVNode" #label>
       <component :is="label" />
     </template>
-    <component v-model="getModelValue" :is="renderComponent()" />
+    <component
+      v-model="getModelValue"
+      v-bind="schema.componentProps"
+      :is="renderComponent()"
+    />
   </ElFormItem>
 </template>
