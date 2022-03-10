@@ -62,5 +62,9 @@ export interface FormActionType {
   setProps: (props: Partial<FormProps>) => void;
   validate: (callback: (valid: any) => void) => void;
   resetFields: () => void;
-  clearValidate: () => void;
+  clearValidate: (props?: string | string[]) => void;
+}
+
+export interface FormItemActionType {
+  
 }

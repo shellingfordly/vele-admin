@@ -1,37 +1,44 @@
 <script lang="ts" setup>
-import { computed, defineComponent, PropType } from "vue";
+import { computed, ref, useAttrs } from "vue";
 import { componentMap } from "../componentMap";
 import { FormSchema } from "../types";
 import { ElFormItem } from "element-plus";
 import { isString } from "/@/utils/help/is";
 
-const emit = defineEmits(["update:value"]);
-const props = defineProps({
-  schema: {
-    type: Object as PropType<FormSchema>,
-    default: () => ({}),
-  },
-  value: Object as PropType<Recordable>,
-});
-
-const { component, label } = props.schema;
+const attrs = useAttrs();
+const props = defineProps<{
+  schema: FormSchema;
+  formProps: Recordable;
+  setFormModel: (k: string, v: any) => {};
+}>();
+const formItemRef = ref();
+const { component, field, label } = props.schema;
 
 const labelIsVNode = computed(() => !isString(label));
 
-const getElFormItemValue = computed(() => {
-  if (isString(label)) {
-    return { label };
-  }
-  return {};
-});
+const compAttr = computed(() => ({
+  ...props.schema.componentProps,
+}));
 
+// 内容组件的双向绑定数据
 const getModelValue = computed({
   get() {
-    return props.value;
+    return props.formProps.model[field];
   },
   set(value) {
-    emit("update:value", value);
+    props.setFormModel(field, value);
   },
+});
+
+const getBindValue = computed(() => {
+  const value: Recordable = {
+    ...attrs,
+    prop: field,
+  };
+  if (isString(label)) {
+    value.label = label;
+  }
+  return value;
 });
 
 function renderComponent() {
@@ -43,13 +50,13 @@ function renderComponent() {
 </script>
 
 <template>
-  <ElFormItem v-bind="getElFormItemValue">
+  <ElFormItem ref="formItemRef" v-bind="getBindValue">
     <template v-if="labelIsVNode" #label>
       <component :is="label" />
     </template>
     <component
       v-model="getModelValue"
-      v-bind="schema.componentProps"
+      v-bind="compAttr"
       :is="renderComponent()"
     />
   </ElFormItem>

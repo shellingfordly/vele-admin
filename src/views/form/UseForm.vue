@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { h, reactive, ref, watch } from "vue";
-import useForm from "/@/components/VeForm/hooks/useForm";
-import VeForm from "/@/components/VeForm/index.vue";
+import { reactive, ref } from "vue";
+import VeForm, { useForm } from "../../components/VeForm";
 import { FormSchema } from "/@/components/VeForm/types";
 
 const schemas: FormSchema[] = [
@@ -78,16 +77,12 @@ const schemas: FormSchema[] = [
 ];
 
 const formData = reactive({
-  name: "",
+  name: "111",
   age: undefined,
   city: null,
   sex: null,
   like: [],
   date: "",
-});
-
-watch(formData, () => {
-  console.log("formData ======", formData);
 });
 
 const rules = reactive({
@@ -111,14 +106,7 @@ const rules = reactive({
       trigger: "blur",
     },
   ],
-  date: [
-    {
-      type: "date",
-      required: true,
-      message: "Please pick a date",
-      trigger: "change",
-    },
-  ],
+
   like: [
     {
       type: "array",
@@ -151,6 +139,8 @@ const { register, methods } = useForm({
   schemas,
 });
 
+const formRef = ref();
+
 const submitForm = () => {
   methods.validate((valid: any) => {
     if (valid) {
@@ -163,15 +153,20 @@ const submitForm = () => {
 };
 
 const resetForm = () => {
-  methods.resetFields();
+  formRef.value.resetFields();
 };
 
+const clearValidate = () => {
+  formRef.value.clearValidate();
+};
 </script>
 
 <template>
-  <VeForm :formData="formData" @register="register"> </VeForm>
+  <VeForm ref="formRef" @register="register" />
+
   <ElButton @click="submitForm">submitForm</ElButton>
   <ElButton @click="resetForm">resetForm</ElButton>
+  <ElButton @click="clearValidate">clearValidate</ElButton>
 </template>
 
 <style scoped lang="less"></style>

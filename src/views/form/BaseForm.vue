@@ -4,7 +4,6 @@ import type { ElForm } from "element-plus";
 
 type FormInstance = InstanceType<typeof ElForm>;
 
-const formSize = ref("");
 const ruleFormRef = ref<FormInstance>();
 const ruleForm = reactive({
   name: "",

@@ -4,24 +4,25 @@ import { throwError } from "/@/utils/common/log";
 import { isProdMode } from "/@/utils/env/env";
 
 export default function useForm(props?: Partial<FormProps>) {
-  const formRef = ref<Nullable<FormActionType>>(null);
+  const formAction = ref<Nullable<FormActionType>>(null);
   const loadedRef = ref<Nullable<boolean>>(false);
 
   function register(instance: FormActionType) {
     if (isProdMode()) {
       // 开发环境下，组件卸载后释放内存
       onUnmounted(() => {
-        formRef.value = null;
+        formAction.value = null;
         loadedRef.value = null;
       });
     }
 
     // form 组件实例 instance 已存在
-    if (unref(loadedRef) && isProdMode() && instance === unref(formRef)) {
+    // 实际上 register 拿到的并不是 组件实例， 只是挂载了一些组件内部方法的 对象 formAction
+    if (unref(loadedRef) && isProdMode() && instance === unref(formAction)) {
       return;
     }
 
-    formRef.value = instance;
+    formAction.value = instance;
     loadedRef.value = true;
 
     // 监听 props， 若props改变了
@@ -38,7 +39,7 @@ export default function useForm(props?: Partial<FormProps>) {
   }
 
   async function getForm() {
-    const form = unref(formRef);
+    const form = unref(formAction);
     if (!form) {
       throwError(
         "The form instance has not been obtained, please make sure that the form has been rendered when performing the form operation!"
@@ -55,8 +56,6 @@ export default function useForm(props?: Partial<FormProps>) {
     },
     async validate(callback: (valid: any) => void) {
       const form = await getForm();
-      console.log(form);
-
       form.validate(callback);
     },
     async resetFields() {

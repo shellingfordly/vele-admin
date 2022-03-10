@@ -27,13 +27,9 @@ const menus: ComputedRef<MenuModel[]> = computed(() => menuStore.getMenus);
 const route = useRoute();
 const defaultActive = route.name as string;
 
-function handleOpen(key: any, keyPath: any) {
-  console.log(key, keyPath);
-}
+function handleOpen(key: any, keyPath: any) {}
 
-function handleClose(key: any, keyPath: any) {
-  console.log(key, keyPath);
-}
+function handleClose(key: any, keyPath: any) {}
 </script>
 
 <style lang="less" scoped>
