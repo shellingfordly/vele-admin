@@ -20,5 +20,16 @@ export function useFormEvents({ formElRef }: UseFormActionContext) {
     return await unref(formElRef).validate(callback);
   }
 
-  return { resetFields, clearValidate, validate };
+  async function validateField(
+    prop: string | string[],
+    callback: (err: string) => void
+  ) {
+    return await unref(formElRef).validateField(prop, callback);
+  }
+
+  async function scrollToField(prop: string) {
+    return await unref(formElRef).scrollToField(prop);
+  }
+
+  return { resetFields, clearValidate, validate, validateField, scrollToField };
 }

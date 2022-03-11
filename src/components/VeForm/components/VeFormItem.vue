@@ -11,7 +11,6 @@ const props = defineProps<{
   formProps: Recordable;
   setFormModel: (k: string, v: any) => {};
 }>();
-const formItemRef = ref();
 const { component, field, label } = props.schema;
 
 const labelIsVNode = computed(() => !isString(label));
@@ -50,7 +49,7 @@ function renderComponent() {
 </script>
 
 <template>
-  <ElFormItem ref="formItemRef" v-bind="getBindValue">
+  <ElFormItem v-bind="getBindValue">
     <template v-if="labelIsVNode" #label>
       <component :is="label" />
     </template>

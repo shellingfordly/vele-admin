@@ -58,6 +58,13 @@ export default function useForm(props?: Partial<FormProps>) {
       const form = await getForm();
       form.validate(callback);
     },
+    async validateField(
+      props: string | string[],
+      callback: (err: string) => void
+    ) {
+      const form = await getForm();
+      form.validateField(props, callback);
+    },
     async resetFields() {
       const form = await getForm();
       form.resetFields();
@@ -65,6 +72,10 @@ export default function useForm(props?: Partial<FormProps>) {
     async clearValidate() {
       const form = await getForm();
       form.clearValidate();
+    },
+    async scrollToField(prop: string) {
+      const form = await getForm();
+      form.scrollToField(prop);
     },
   };
 

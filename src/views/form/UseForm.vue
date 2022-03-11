@@ -112,7 +112,7 @@ const rules = reactive({
       type: "array",
       required: true,
       message: "Please select like",
-      trigger: "blur",
+      trigger: "change",
     },
   ],
   sex: [
@@ -120,7 +120,7 @@ const rules = reactive({
       type: "number",
       required: true,
       message: "Please select sex",
-      trigger: "blur",
+      trigger: "change",
     },
   ],
   city: [

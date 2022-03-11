@@ -22,10 +22,11 @@ const getSchema = computed(() => {
   return schemas || [];
 });
 
-const { validate, resetFields, clearValidate } = useFormEvents({
-  propsRef,
-  formElRef: formRef as Ref<FormActionType>,
-});
+const { validate, resetFields, clearValidate, scrollToField, validateField } =
+  useFormEvents({
+    propsRef,
+    formElRef: formRef as Ref<FormActionType>,
+  });
 
 function setFormModel(key: string, value: any) {
   if (propsRef.value.model) {
@@ -42,9 +43,11 @@ const formAction: Partial<FormActionType> = {
   validate,
   resetFields,
   clearValidate,
+  scrollToField,
+  validateField,
 };
 
-// 暴露给外面使用
+// 暴露给外面的组件实例使用
 defineExpose(formAction);
 
 onMounted(() => {
