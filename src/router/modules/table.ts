@@ -15,7 +15,7 @@ const tableRoutes: AppRouteRecordRaw[] = [
     children: [
       {
         path: "normal",
-        name: "Normal",
+        name: "NormalTable",
         component: () => import("/@/views/table/NormalTable.vue"),
         meta: {
           title: "普通表格",
@@ -23,10 +23,18 @@ const tableRoutes: AppRouteRecordRaw[] = [
       },
       {
         path: "tree",
-        name: "tree",
+        name: "TreeTable",
         component: () => import("/@/views/table/TreeTable.vue"),
         meta: {
           title: "树型表格",
+        },
+      },
+      {
+        path: "use",
+        name: "UseTable",
+        component: () => import("/@/views/table/UseTable.vue"),
+        meta: {
+          title: "UseTable",
         },
       },
     ],
