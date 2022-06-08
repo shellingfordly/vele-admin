@@ -16,7 +16,7 @@
 
 由于我的服务器我平时不怎么管，服务器上的页面可能会有滞后，github pages我是配置了github actions自动部署的，有时候可能存在部署失败的情况，这里两个地址都放出来。当然，也可以自行拉取代码在本地跑。
 
-[服务器 地址](http://106.54.183.217:8083/#/home/index)
+[服务器 地址](http://admin.shellingfordly.xyz)
 [github pages 地址](https://shellingfordly.github.io/vele-admin)
 
 ![image](https://user-images.githubusercontent.com/39196952/145194398-b63a789c-6362-4d7a-a787-b4e3e7d32333.png)
