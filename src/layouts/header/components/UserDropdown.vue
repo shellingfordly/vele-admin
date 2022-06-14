@@ -17,7 +17,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from "vue";
 import { userStore } from "/@/store/modules/user";
 import { UserFilled, SwitchButton } from "@element-plus/icons";
 

@@ -17,7 +17,6 @@
   </el-container>
 </template>
 <script setup lang="ts">
-import { onMounted, reactive } from "vue";
 import LayoutContent from "./content/Content.vue";
 import LayoutFooter from "./footer/Footer.vue";
 import LayoutHeader from "./header/Header.vue";

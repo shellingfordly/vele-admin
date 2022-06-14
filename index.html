@@ -3,110 +3,111 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" href="/public/favicon.ico" />
+  <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vele Admin</title>
+  <style>
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #app {
+      width: 100%;
+      height: 100%;
+    }
+
+    .app-loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .app-loading-line {
+      width: 50px;
+      height: 60px;
+      margin: auto;
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .app-loading-title {
+      display: flex;
+      margin-top: 30px;
+      font-size: 30px;
+      color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app-loading-line>div {
+      background-color: #409eff;
+      height: 100%;
+      width: 6px;
+      display: inline-block;
+
+      -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+      animation: stretchdelay 1.2s infinite ease-in-out;
+    }
+
+    .app-loading-line .app-loading-item2 {
+      -webkit-animation-delay: -1.1s;
+      animation-delay: -1.1s;
+    }
+
+    .app-loading-line .app-loading-item3 {
+      -webkit-animation-delay: -1s;
+      animation-delay: -1s;
+    }
+
+    .app-loading-line .app-loading-item4 {
+      -webkit-animation-delay: -0.9s;
+      animation-delay: -0.9s;
+    }
+
+    .app-loading-line .app-loading-item5 {
+      -webkit-animation-delay: -0.8s;
+      animation-delay: -0.8s;
+    }
+
+    @-webkit-keyframes stretchdelay {
+
+      0%,
+      40%,
+      100% {
+        -webkit-transform: scaleY(0.4);
+      }
+
+      20% {
+        -webkit-transform: scaleY(1);
+      }
+    }
+
+    @keyframes stretchdelay {
+
+      0%,
+      40%,
+      100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+      }
+
+      20% {
+        transform: scaleY(1);
+        -webkit-transform: scaleY(1);
+      }
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
-    <style>
-      body,
-      html {
-        width: 100%;
-        height: 100%;
-        padding: 0;
-        margin: 0;
-      }
 
-      #app {
-        width: 100%;
-        height: 100%;
-      }
-
-      .app-loading {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-      }
-
-      .app-loading-line {
-        width: 50px;
-        height: 60px;
-        margin: auto;
-        font-size: 10px;
-        text-align: center;
-      }
-
-      .app-loading-title {
-        display: flex;
-        margin-top: 30px;
-        font-size: 30px;
-        color: rgba(0, 0, 0, 0.85);
-        justify-content: center;
-        align-items: center;
-      }
-
-      .app-loading-line>div {
-        background-color: #409eff;
-        height: 100%;
-        width: 6px;
-        display: inline-block;
-
-        -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
-        animation: stretchdelay 1.2s infinite ease-in-out;
-      }
-
-      .app-loading-line .app-loading-item2 {
-        -webkit-animation-delay: -1.1s;
-        animation-delay: -1.1s;
-      }
-
-      .app-loading-line .app-loading-item3 {
-        -webkit-animation-delay: -1s;
-        animation-delay: -1s;
-      }
-
-      .app-loading-line .app-loading-item4 {
-        -webkit-animation-delay: -0.9s;
-        animation-delay: -0.9s;
-      }
-
-      .app-loading-line .app-loading-item5 {
-        -webkit-animation-delay: -0.8s;
-        animation-delay: -0.8s;
-      }
-
-      @-webkit-keyframes stretchdelay {
-
-        0%,
-        40%,
-        100% {
-          -webkit-transform: scaleY(0.4);
-        }
-
-        20% {
-          -webkit-transform: scaleY(1);
-        }
-      }
-
-      @keyframes stretchdelay {
-
-        0%,
-        40%,
-        100% {
-          transform: scaleY(0.4);
-          -webkit-transform: scaleY(0.4);
-        }
-
-        20% {
-          transform: scaleY(1);
-          -webkit-transform: scaleY(1);
-        }
-      }
-    </style>
     <div class="app-loading">
       <div class="app-loading-wrap">
         <div class="app-loading-line">

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { computed, PropType, useAttrs } from "vue";
 import { isString } from "/@/utils/help/is";
 import type { OptionItem } from "/@/types/common";
 import { ElRadio, ElRadioButton } from "element-plus";

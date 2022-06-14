@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { ref } from "vue";
 import StepOne from "./components/StepOne.vue";
 import { ElResult } from "element-plus";
 

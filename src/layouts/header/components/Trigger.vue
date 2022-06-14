@@ -6,7 +6,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from "vue";
 import appStore from "/@/store/modules/app";
 
 const isCollapse = computed(() => appStore.getIsCollapse);

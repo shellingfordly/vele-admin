@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { ref, reactive } from "vue";
-
 const $props = defineProps<{ modelValue: number }>();
 const $emit = defineEmits(["update:modelValue", "success"]);
 

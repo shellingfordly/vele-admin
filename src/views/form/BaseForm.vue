@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { reactive, ref } from "vue";
 import type { ElForm } from "element-plus";
 
 type FormInstance = InstanceType<typeof ElForm>;

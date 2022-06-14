@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { computed, ref, useAttrs } from "vue";
 import { componentMap } from "../componentMap";
 import { FormSchema } from "../types";
 import { ElFormItem } from "element-plus";

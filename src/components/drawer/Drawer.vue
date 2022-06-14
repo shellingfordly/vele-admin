@@ -11,13 +11,6 @@
   </el-drawer>
 </template>
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  getCurrentInstance,
-  reactive,
-  ref,
-} from "vue";
 import { deepClone } from "/@/utils/help/obj";
 
 export default defineComponent({

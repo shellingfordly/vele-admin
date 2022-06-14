@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { ref } from "vue";
 const searchKey = ref("");
 defineProps<{ title: string; placeholder?: string }>();
 const emit = defineEmits(["search"]);

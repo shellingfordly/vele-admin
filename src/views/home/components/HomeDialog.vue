@@ -7,7 +7,6 @@
   </WDialog>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
 import WDialog from "/@/components/dialog/Dialog.vue";
 import { useDialog } from "/@/components/dialog/useDialog";
 
@@ -17,7 +16,7 @@ export default defineComponent({
   setup() {
     const [register, { actionDialog }] = useDialog();
     function close() {
-      alert(1)
+      alert(1);
       actionDialog(false);
     }
     return {

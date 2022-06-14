@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { reactive, ref } from "vue";
 import VeForm, { useForm } from "../../components/VeForm";
 import { FormSchema } from "/@/components/VeForm/types";
 

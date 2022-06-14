@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
 import * as Icons from "@element-plus/icons";
 
 export default defineComponent({

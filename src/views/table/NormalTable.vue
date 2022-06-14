@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
 import TableHeader from "./components/TableHeader.vue";
 import { getTableList } from "/@/api";
 

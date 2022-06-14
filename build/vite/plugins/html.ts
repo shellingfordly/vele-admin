@@ -1,4 +1,4 @@
-import { ViteEnv } from "../types/env";
+import { ViteEnv } from "../../types/env";
 
 export function configHtmlPlugin(env: ViteEnv) {
   const { VITE_APP_TITLE = "Vue3-Admin" } = env;

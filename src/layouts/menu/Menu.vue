@@ -10,7 +10,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from "vue";
 import MenuBar from "./components/MenuBar.vue";
 import { useGlobSetting } from "/@/hooks/setting/globSetting";
 import appStore from "/@/store/modules/app";

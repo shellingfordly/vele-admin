@@ -2,8 +2,6 @@
 import { useDrawer } from "/@/components/drawer/useDrawer";
 import Drawer from "/@/components/drawer/Drawer.vue";
 import { Direction } from "/@/components/drawer/types";
-import { ref } from "vue";
-
 const baseTitle = ref("Left");
 
 const [baseRegister, { actionDrawer, setProps }] = useDrawer({

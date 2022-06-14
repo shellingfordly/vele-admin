@@ -24,7 +24,6 @@
 
 <script lang="ts">
 import { ElMessage } from "element-plus";
-import { defineComponent, reactive, ref } from "vue";
 import { userStore } from "/@/store/modules/user";
 
 export default defineComponent({

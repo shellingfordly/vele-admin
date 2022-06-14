@@ -23,7 +23,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, PropType } from "vue";
 import { MenuModel } from "/@/types/router/menu";
 import { useGoPath } from "/@/utils/router/useRouter";
 

@@ -14,14 +14,6 @@
   </el-dialog>
 </template>
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  getCurrentInstance,
-  reactive,
-  ref,
-} from "vue";
-
 export default defineComponent({
   name: "",
   emits: ["register"],

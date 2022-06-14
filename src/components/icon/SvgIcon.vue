@@ -9,7 +9,6 @@
 </template>
 <script lang="ts" setup>
 import type { CSSProperties } from "vue";
-import { computed } from "vue";
 
 const props = defineProps({
   prefix: {

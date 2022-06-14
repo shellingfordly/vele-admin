@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import TableHeader from "./components/TableHeader.vue";
 import { getTableTreeList } from "/@/api";
-import { onMounted, ref } from "vue";
-
 const tableData = ref([]);
 const allData = ref([]);
 const expandRowKeys = ref<string[]>([]);

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { ElTable, ElTableColumn } from "element-plus";
-import { computed, onMounted, ref, unref, useAttrs } from "vue";
 import { BasicTableProps, TableActionType } from "./types";
 import { useTableEvent } from "./hooks/useTableEvent";
 import { AnySoaRecord } from "dns";
@@ -42,6 +41,10 @@ onMounted(() => {
 
 <template>
   <ElTable ref="tableRef" v-bind="getBinValue">
-    <ElTableColumn v-bind="column" v-for="(column, index) in getColumns" :key="index" />
+    <ElTableColumn
+      v-bind="column"
+      v-for="(column, index) in getColumns"
+      :key="index"
+    />
   </ElTable>
 </template>

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { computed, PropType, useAttrs } from "vue";
 import type { SelectOption } from "./types";
 
 const attrs = useAttrs();
