@@ -25,6 +25,7 @@ export default {
 <script lang="ts" setup>
 import { MenuModel } from "/@/types/router/menu";
 import { useGoPath } from "/@/utils/router/useRouter";
+import type { PropType } from "vue";
 
 const props = defineProps({
   menu: {

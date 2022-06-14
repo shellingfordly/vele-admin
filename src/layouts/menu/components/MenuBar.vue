@@ -20,6 +20,7 @@ import { MenuModel } from "/@/types/router/menu";
 import MenuItem from "./MenuItem.vue";
 import { getMenuColor } from "/@/theme/menu";
 import { useRoute } from "vue-router";
+import type { ComputedRef } from "vue";
 
 const isCollapse = computed(() => appStore.getIsCollapse);
 const menus: ComputedRef<MenuModel[]> = computed(() => menuStore.getMenus);

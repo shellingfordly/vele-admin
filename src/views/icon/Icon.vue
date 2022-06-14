@@ -5,9 +5,7 @@ import { elementIcons } from "./const";
 <template>
   <div class="icons-container">
     <div class="icon-item" v-for="item of elementIcons" :key="item">
-      <el-icon>
-        <component :is="item" />
-      </el-icon>
+      <VeIcon :name="item" />
       <span>{{ item }}</span>
     </div>
   </div>

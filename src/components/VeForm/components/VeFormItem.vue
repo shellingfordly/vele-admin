@@ -8,7 +8,7 @@ const attrs = useAttrs();
 const props = defineProps<{
   schema: FormSchema;
   formProps: Recordable;
-  setFormModel: (k: string, v: any) => {};
+  setFormModel: (k: string, v: any) => void;
 }>();
 const { component, field, label } = props.schema;
 
