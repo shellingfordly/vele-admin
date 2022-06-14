@@ -40,20 +40,20 @@ const [closeRegister, { actionDialog: closeAction }] = useDialog({
   <div class="mb-5">
     <el-button @click="closeAction(true)">Close Dialog</el-button>
   </div>
-  <Dialog @register="baseRegister"> Base Dialog Content </Dialog>
-  <Dialog @register="outerRegister">
+  <VeDialog @register="baseRegister"> Base Dialog Content </VeDialog>
+  <VeDialog @register="outerRegister">
     <div class="mb-10">Nested Dialog Content</div>
-    <Dialog @register="innerRegister"> Inner Dialog Content </Dialog>
+    <VeDialog @register="innerRegister"> Inner Dialog Content </VeDialog>
     <el-button @click="innerAction(true)">Inner Dialog</el-button>
-  </Dialog>
-  <Dialog @register="centeredRegister"> Centered Dialog Content </Dialog>
-  <Dialog @register="centeredRegister"> Centered Dialog Content </Dialog>
-  <Dialog @register="closeRegister">
+  </VeDialog>
+  <VeDialog @register="centeredRegister"> Centered Dialog Content </VeDialog>
+  <VeDialog @register="centeredRegister"> Centered Dialog Content </VeDialog>
+  <VeDialog @register="closeRegister">
     <div class="mb-5">限制点击弹窗外部时无法关闭</div>
-    <el-button type="primary" @click="closeAction(false)"
-      >点击此处关闭弹窗</el-button
-    >
-  </Dialog>
+    <el-button type="primary" @click="closeAction(false)">
+      点击此处关闭弹窗
+    </el-button>
+  </VeDialog>
 </template>
 
 <style scoped lang="less"></style>

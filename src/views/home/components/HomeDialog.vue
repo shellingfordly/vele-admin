@@ -8,7 +8,7 @@
 </template>
 <script lang="ts">
 import WDialog from "/@/components/dialog/Dialog.vue";
-import { useDialog } from "/@/components/dialog/useDialog";
+import { useDialog } from "/@/components/VeDialog/useDialog";
 
 export default defineComponent({
   name: "HomeDialog",
@@ -16,9 +16,9 @@ export default defineComponent({
   setup() {
     const [register, { actionDialog }] = useDialog();
     function close() {
-      alert(1);
       actionDialog(false);
     }
+
     return {
       register,
       close,

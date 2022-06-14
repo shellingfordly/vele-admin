@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { useDrawer } from "/@/components/VeDrawer/useDrawer";
-import Drawer from "/@/components/VeDrawer/VeDrawer.vue";
 import { Direction } from "/@/components/VeDrawer/types";
 const baseTitle = ref("Left");
 
@@ -65,21 +64,21 @@ const [closeRegister, { actionDrawer: closeAction }] = useDrawer({
   <div class="mb-5">
     <el-button @click="closeAction(true)">Close Drawer</el-button>
   </div>
-  <Drawer @register="baseRegister">
+  <VeDrawer @register="baseRegister">
     Base {{ baseTitle }} Drawer Content
-  </Drawer>
-  <Drawer @register="outerRegister">
+  </VeDrawer>
+  <VeDrawer @register="outerRegister">
     <div class="mb-10">Nested Drawer Content</div>
-    <Drawer @register="innerRegister"> Inner Drawer Content </Drawer>
+    <VeDrawer @register="innerRegister"> Inner Drawer Content </VeDrawer>
     <el-button @click="innerAction(true)">Inner Drawer</el-button>
-  </Drawer>
-  <Drawer @register="noTitleRegister"> No Title Drawer Content </Drawer>
-  <Drawer @register="closeRegister">
+  </VeDrawer>
+  <VeDrawer @register="noTitleRegister"> No Title Drawer Content </VeDrawer>
+  <VeDrawer @register="closeRegister">
     <div class="mb-5">限制点击弹窗外部时无法关闭</div>
     <el-button type="primary" @click="closeAction(false)">
       点击此处关闭弹窗
     </el-button>
-  </Drawer>
+  </VeDrawer>
 </template>
 
 <style scoped lang="less"></style>
