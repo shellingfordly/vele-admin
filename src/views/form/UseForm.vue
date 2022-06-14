@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import VeForm, { useForm } from "../../components/VeForm";
+import { useForm } from "../../components/VeForm";
 import { FormSchema } from "/@/components/VeForm/types";
 
 const schemas: FormSchema[] = [

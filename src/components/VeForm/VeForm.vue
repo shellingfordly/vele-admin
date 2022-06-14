@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import type { Ref } from "vue";
 import type { FormActionType, FormProps } from "./types";
-import VeFormItem from "./components/VeFormItem.vue";
 import { useFormEvents } from "./hooks/useFormEvents";
 
 const attrs = useAttrs();

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import VeTable, { useTable, BasicColumnProps } from "/@/components/VeTable";
+import { useTable, BasicColumnProps } from "/@/components/VeTable";
 import TableHeader from "./components/TableHeader.vue";
 import { useTableData } from "./hooks/useTableData";
 

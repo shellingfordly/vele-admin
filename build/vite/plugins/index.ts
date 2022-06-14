@@ -5,6 +5,7 @@ import { configMockPlugin } from "./mock";
 import { configSvgIconsPlugin } from "./svgSprite";
 import { configHtmlPlugin } from "./html";
 import { configAutoImportPlugin } from "./autoImport";
+import { configComponentsPlugin } from "./component";
 import windiCSS from "vite-plugin-windicss";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 
@@ -16,6 +17,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   plugins.push(configSvgIconsPlugin(isBuild));
   plugins.push(windiCSS());
   plugins.push(configAutoImportPlugin());
+  plugins.push(configComponentsPlugin());
 
   return plugins;
 }

@@ -15,7 +15,6 @@
 </template>
 <script lang="ts">
 export default defineComponent({
-  name: "",
   emits: ["register"],
   setup(props, { emit }) {
     const visible = ref(false);

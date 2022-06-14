@@ -25,4 +25,6 @@ export interface MethodsModel {
   setProps: (props: DrawerPropsModel) => void;
 }
 
-export type ResultModel = [Function, MethodsModel];
+export type RegisterModel = (...args: any) => void;
+
+export type ResultModel = [RegisterModel, MethodsModel];

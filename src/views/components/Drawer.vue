@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useDrawer } from "/@/components/drawer/useDrawer";
-import Drawer from "/@/components/drawer/Drawer.vue";
-import { Direction } from "/@/components/drawer/types";
+import { useDrawer } from "/@/components/VeDrawer/useDrawer";
+import Drawer from "/@/components/VeDrawer/VeDrawer.vue";
+import { Direction } from "/@/components/VeDrawer/types";
 const baseTitle = ref("Left");
 
 const [baseRegister, { actionDrawer, setProps }] = useDrawer({

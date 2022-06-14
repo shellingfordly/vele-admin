@@ -14,7 +14,8 @@
 import { deepClone } from "/@/utils/help/obj";
 
 export default defineComponent({
-  name: "Drawer",
+  name: "VeDrawer",
+  emits: ["register"],
   setup(props, { emit, attrs }) {
     const isShow = ref(false);
     const propsRef = reactive({});

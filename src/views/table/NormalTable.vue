@@ -23,7 +23,7 @@ async function onSearch(searchKey: string) {
     placeholder="请输入搜索的名字"
     @search="onSearch"
   />
-  <el-table :data="tableData" border stripe style="width: 100%">
+  <el-table :data="tableData" :border="true" stripe style="width: 100%">
     <el-table-column prop="date" label="Date" width="180" />
     <el-table-column prop="name" label="Name" width="180" />
     <el-table-column prop="email" label="Email" />

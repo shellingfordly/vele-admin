@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { useDialog } from "/@/components/dialog/useDialog";
-import Dialog from "/@/components/dialog/Dialog.vue";
+import { useDialog } from "/@/components/VeDialog/useDialog";
 
 const [baseRegister, { actionDialog: baseAction }] = useDialog({
   title: "Base Dialog",
