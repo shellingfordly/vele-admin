@@ -7,6 +7,7 @@
       <el-header v-if="isShow.header">
         <layout-header />
       </el-header>
+      <layout-tabs />
       <el-main>
         <layout-content />
       </el-main>
@@ -21,6 +22,7 @@ import LayoutContent from "./content/Content.vue";
 import LayoutFooter from "./footer/Footer.vue";
 import LayoutHeader from "./header/Header.vue";
 import LayoutMenu from "./menu/Menu.vue";
+import LayoutTabs from "./tabs/Tabs.vue";
 import AppModule from "../store/modules/app";
 
 const isShow = reactive({

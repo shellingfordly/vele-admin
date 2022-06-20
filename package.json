@@ -13,8 +13,10 @@
     "echarts": "^5.2.2",
     "element-plus": "^2.0.1",
     "lodash-es": "^4.17.21",
+    "sortablejs": "^1.15.0",
     "vue": "^3.2.20",
     "vue-router": "^4.0.12",
+    "vuedraggable": "^4.1.0",
     "vuex": "^4.0.0",
     "vuex-module-decorators": "^1.0.1"
   },

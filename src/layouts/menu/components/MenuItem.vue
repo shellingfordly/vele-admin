@@ -26,6 +26,7 @@ export default {
 import { MenuModel } from "/@/types/router/menu";
 import { useGoPath } from "/@/utils/router/useRouter";
 import type { PropType } from "vue";
+import { tabsStore } from "/@/store/modules/tabs";
 
 const props = defineProps({
   menu: {
@@ -39,5 +40,7 @@ const isSubmenu = computed(() => props.menu.children.length > 0);
 
 function onClick(menu: MenuModel) {
   goPath(menu.path);
+  tabsStore.setHistoryRoute(menu);
+  tabsStore.setActiveTab(menu.name);
 }
 </script>
