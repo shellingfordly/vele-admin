@@ -1,5 +1,3 @@
-![logo](https://user-images.githubusercontent.com/39196952/145187616-ab489c68-39d5-4d3e-bfbb-c8c8bc78737b.jpg)
-
 # vele-admin
 
 ## Introduction
