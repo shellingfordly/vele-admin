@@ -12,9 +12,8 @@
 
 ## Preview
 
-由于我的服务器我平时不怎么管，服务器上的页面可能会有滞后，github pages 我是配置了 github actions 自动部署的，有时候可能存在部署失败的情况，这里两个地址都放出来。当然，也可以自行拉取代码在本地跑。
+服务器很久没有维护了，域名也到期了
 
-[服务器 地址](http://admin.shellingfordly.xyz)
 [github pages 地址](https://shellingfordly.github.io/vele-admin)
 
 ![preview](./docs/preview.png)
