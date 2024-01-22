@@ -1,8 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="inherit">
-      <layout-menu />
-    </el-aside>
+    <layout-menu />
     <el-container>
       <el-header v-if="isShow.header">
         <layout-header />
