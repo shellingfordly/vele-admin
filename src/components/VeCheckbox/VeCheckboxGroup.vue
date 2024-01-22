@@ -3,12 +3,9 @@ import { isString } from "/@/utils/help/is";
 import type { OptionItem } from "/@/types/common";
 import { ElCheckbox, ElCheckboxButton } from "element-plus";
 import { CheckboxType } from "/@/enums/component";
+import type { PropType } from "vue";
 
 const props = defineProps({
-  modelValue: {
-    type: Array,
-    required: true,
-  },
   options: {
     type: Array as PropType<string[] | OptionItem[]>,
     default: [],
@@ -18,6 +15,7 @@ const props = defineProps({
     default: "Checkbox",
   },
 });
+const modelValue = defineModel<[]>({ required: true });
 
 const getOptions = computed<OptionItem[]>(() => {
   const options = props.options;

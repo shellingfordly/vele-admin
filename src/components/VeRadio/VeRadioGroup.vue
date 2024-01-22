@@ -3,12 +3,9 @@ import { isString } from "/@/utils/help/is";
 import type { OptionItem } from "/@/types/common";
 import { ElRadio, ElRadioButton } from "element-plus";
 import { RadioType } from "/@/enums/component";
+import type { PropType } from "vue";
 
 const props = defineProps({
-  modelValue: {
-    type: String as PropType<string | number | boolean>,
-    required: true,
-  },
   options: {
     type: Array as PropType<string[] | OptionItem[]>,
     default: [],
@@ -18,12 +15,18 @@ const props = defineProps({
     default: "Radio",
   },
 });
+const modelValue = defineModel<string | number | boolean>({
+  required: true,
+});
 
 const getOptions = computed<OptionItem[]>(() => {
   const options = props.options;
   if (options.length) {
     if (isString(options[0])) {
-      return options.map((value) => ({ label: value, value })) as OptionItem[];
+      return options.map((value: any) => ({
+        label: value,
+        value,
+      })) as OptionItem[];
     } else {
       return options as OptionItem[];
     }
