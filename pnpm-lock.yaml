@@ -18,7 +18,7 @@ dependencies:
     specifier: ^5.2.2
     version: 5.4.3
   element-plus:
-    specifier: ^2.0.1
+    specifier: ^2.5.2
     version: 2.5.2(vue@3.4.15)
   lodash-es:
     specifier: ^4.17.21
