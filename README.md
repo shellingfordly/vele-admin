@@ -12,9 +12,7 @@
 
 ## Preview
 
-服务器很久没有维护了，域名也到期了
-
-[github pages 地址](https://shellingfordly.github.io/vele-admin)
+[预览地址](https://vele-admin.vercel.app/)
 
 ![preview](./docs/preview.png)
 
